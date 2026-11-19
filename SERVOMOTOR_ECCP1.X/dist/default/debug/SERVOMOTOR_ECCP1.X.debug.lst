@@ -1,0 +1,2553 @@
+
+
+Microchip MPLAB XC8 Assembler V3.10 build 20250813170317 
+                                                                                               Wed Nov 18 17:17:15 2026
+
+Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1 
+     1                           	processor	12F1840
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,space=0,delta=2,noexec
+     5                           	psect	nvCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	nvBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     8                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     9                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+    10                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+    11                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    12                           	psect	maintext,global,class=CODE,space=0,merge=1,split=1,delta=2
+    13                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    15                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    16                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    17                           	psect	text5,local,class=CODE,space=0,merge=1,delta=2
+    18                           	psect	text6,local,class=CODE,space=0,merge=1,delta=2
+    19                           	psect	text7,local,class=CODE,space=0,merge=1,delta=2
+    20                           	psect	text8,local,class=CODE,space=0,merge=1,delta=2
+    21                           	psect	text9,local,class=CODE,space=0,merge=1,delta=2
+    22                           	psect	intentry,global,class=CODE,space=0,delta=2
+    23                           	psect	text11,local,class=CODE,space=0,merge=1,delta=2
+    24                           	psect	text12,local,class=CODE,space=0,merge=1,delta=2
+    25                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    26                           	dabs	1,0x7E,2
+    27     0000                     
+    28                           ; Generated 27/03/2025 GMT
+    29                           ; 
+    30                           ; Copyright © 2025, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    31                           ; All rights reserved.
+    32                           ; 
+    33                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    34                           ; 
+    35                           ; Redistribution and use in source and binary forms, with or without modification, are
+    36                           ; permitted provided that the following conditions are met:
+    37                           ; 
+    38                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    39                           ;        conditions and the following disclaimer.
+    40                           ; 
+    41                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    42                           ;        of conditions and the following disclaimer in the documentation and/or other
+    43                           ;        materials provided with the distribution. Publication is not required when
+    44                           ;        this file is used in an embedded application.
+    45                           ; 
+    46                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    47                           ;        software without specific prior written permission.
+    48                           ; 
+    49                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    50                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    51                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    52                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    53                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    54                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    55                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    56                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    57                           ; 
+    58                           ; 
+    59                           ; Code-generator required, PIC12F1840 Definitions
+    60                           ; 
+    61                           ; SFR Addresses
+    62     0008                     bsr             equ	8
+    63     0005                     fsr0h           equ	5
+    64     0004                     fsr0l           equ	4
+    65     0007                     fsr1h           equ	7
+    66     0006                     fsr1l           equ	6
+    67     0000                     indf            equ	0
+    68     0000                     indf0           equ	0
+    69     0001                     indf1           equ	1
+    70     000B                     intcon          equ	11
+    71     0002                     pc              equ	2
+    72     0002                     pcl             equ	2
+    73     000A                     pclath          equ	10
+    74     0003                     status          equ	3
+    75     0009                     wreg            equ	9
+    76     0000                     INDF0           equ	0	;# 
+    77     0001                     INDF1           equ	1	;# 
+    78     0002                     PCL             equ	2	;# 
+    79     0003                     STATUS          equ	3	;# 
+    80     0004                     FSR0L           equ	4	;# 
+    81     0005                     FSR0H           equ	5	;# 
+    82     0006                     FSR1L           equ	6	;# 
+    83     0007                     FSR1H           equ	7	;# 
+    84     0008                     BSR             equ	8	;# 
+    85     0009                     WREG            equ	9	;# 
+    86     000A                     PCLATH          equ	10	;# 
+    87     000B                     INTCON          equ	11	;# 
+    88     000C                     PORTA           equ	12	;# 
+    89     0011                     PIR1            equ	17	;# 
+    90     0012                     PIR2            equ	18	;# 
+    91     0015                     TMR0            equ	21	;# 
+    92     0016                     TMR1            equ	22	;# 
+    93     0016                     TMR1L           equ	22	;# 
+    94     0017                     TMR1H           equ	23	;# 
+    95     0018                     T1CON           equ	24	;# 
+    96     0019                     T1GCON          equ	25	;# 
+    97     001A                     TMR2            equ	26	;# 
+    98     001B                     PR2             equ	27	;# 
+    99     001C                     T2CON           equ	28	;# 
+   100     001E                     CPSCON0         equ	30	;# 
+   101     001F                     CPSCON1         equ	31	;# 
+   102     008C                     TRISA           equ	140	;# 
+   103     0091                     PIE1            equ	145	;# 
+   104     0092                     PIE2            equ	146	;# 
+   105     0095                     OPTION_REG      equ	149	;# 
+   106     0096                     PCON            equ	150	;# 
+   107     0097                     WDTCON          equ	151	;# 
+   108     0098                     OSCTUNE         equ	152	;# 
+   109     0099                     OSCCON          equ	153	;# 
+   110     009A                     OSCSTAT         equ	154	;# 
+   111     009B                     ADRES           equ	155	;# 
+   112     009B                     ADRESL          equ	155	;# 
+   113     009C                     ADRESH          equ	156	;# 
+   114     009D                     ADCON0          equ	157	;# 
+   115     009E                     ADCON1          equ	158	;# 
+   116     010C                     LATA            equ	268	;# 
+   117     0111                     CM1CON0         equ	273	;# 
+   118     0112                     CM1CON1         equ	274	;# 
+   119     0115                     CMOUT           equ	277	;# 
+   120     0116                     BORCON          equ	278	;# 
+   121     0117                     FVRCON          equ	279	;# 
+   122     0118                     DACCON0         equ	280	;# 
+   123     0119                     DACCON1         equ	281	;# 
+   124     011A                     SRCON0          equ	282	;# 
+   125     011B                     SRCON1          equ	283	;# 
+   126     011D                     APFCON          equ	285	;# 
+   127     011D                     APFCON0         equ	285	;# 
+   128     018C                     ANSELA          equ	396	;# 
+   129     0191                     EEADR           equ	401	;# 
+   130     0191                     EEADRL          equ	401	;# 
+   131     0192                     EEADRH          equ	402	;# 
+   132     0193                     EEDAT           equ	403	;# 
+   133     0193                     EEDATL          equ	403	;# 
+   134     0193                     EEDATA          equ	403	;# 
+   135     0194                     EEDATH          equ	404	;# 
+   136     0195                     EECON1          equ	405	;# 
+   137     0196                     EECON2          equ	406	;# 
+   138     0197                     VREGCON         equ	407	;# 
+   139     0199                     RCREG           equ	409	;# 
+   140     019A                     TXREG           equ	410	;# 
+   141     019B                     SP1BRG          equ	411	;# 
+   142     019B                     SP1BRGL         equ	411	;# 
+   143     019B                     SPBRG           equ	411	;# 
+   144     019B                     SPBRGL          equ	411	;# 
+   145     019C                     SP1BRGH         equ	412	;# 
+   146     019C                     SPBRGH          equ	412	;# 
+   147     019D                     RCSTA           equ	413	;# 
+   148     019E                     TXSTA           equ	414	;# 
+   149     019F                     BAUDCON         equ	415	;# 
+   150     020C                     WPUA            equ	524	;# 
+   151     0211                     SSP1BUF         equ	529	;# 
+   152     0211                     SSPBUF          equ	529	;# 
+   153     0212                     SSP1ADD         equ	530	;# 
+   154     0212                     SSPADD          equ	530	;# 
+   155     0213                     SSP1MSK         equ	531	;# 
+   156     0213                     SSPMSK          equ	531	;# 
+   157     0214                     SSP1STAT        equ	532	;# 
+   158     0214                     SSPSTAT         equ	532	;# 
+   159     0215                     SSP1CON1        equ	533	;# 
+   160     0215                     SSPCON1         equ	533	;# 
+   161     0215                     SSPCON          equ	533	;# 
+   162     0216                     SSP1CON2        equ	534	;# 
+   163     0216                     SSPCON2         equ	534	;# 
+   164     0217                     SSP1CON3        equ	535	;# 
+   165     0217                     SSPCON3         equ	535	;# 
+   166     0291                     CCPR1           equ	657	;# 
+   167     0291                     CCPR1L          equ	657	;# 
+   168     0292                     CCPR1H          equ	658	;# 
+   169     0293                     CCP1CON         equ	659	;# 
+   170     0294                     PWM1CON         equ	660	;# 
+   171     0295                     CCP1AS          equ	661	;# 
+   172     0295                     ECCP1AS         equ	661	;# 
+   173     0296                     PSTR1CON        equ	662	;# 
+   174     0391                     IOCAP           equ	913	;# 
+   175     0392                     IOCAN           equ	914	;# 
+   176     0393                     IOCAF           equ	915	;# 
+   177     039A                     CLKRCON         equ	922	;# 
+   178     039C                     MDCON           equ	924	;# 
+   179     039D                     MDSRC           equ	925	;# 
+   180     039E                     MDCARL          equ	926	;# 
+   181     039F                     MDCARH          equ	927	;# 
+   182     0FE4                     STATUS_SHAD     equ	4068	;# 
+   183     0FE5                     WREG_SHAD       equ	4069	;# 
+   184     0FE6                     BSR_SHAD        equ	4070	;# 
+   185     0FE7                     PCLATH_SHAD     equ	4071	;# 
+   186     0FE8                     FSR0L_SHAD      equ	4072	;# 
+   187     0FE9                     FSR0H_SHAD      equ	4073	;# 
+   188     0FEA                     FSR1L_SHAD      equ	4074	;# 
+   189     0FEB                     FSR1H_SHAD      equ	4075	;# 
+   190     0FED                     STKPTR          equ	4077	;# 
+   191     0FEE                     TOSL            equ	4078	;# 
+   192     0FEF                     TOSH            equ	4079	;# 
+   193     0000                     INDF0           equ	0	;# 
+   194     0001                     INDF1           equ	1	;# 
+   195     0002                     PCL             equ	2	;# 
+   196     0003                     STATUS          equ	3	;# 
+   197     0004                     FSR0L           equ	4	;# 
+   198     0005                     FSR0H           equ	5	;# 
+   199     0006                     FSR1L           equ	6	;# 
+   200     0007                     FSR1H           equ	7	;# 
+   201     0008                     BSR             equ	8	;# 
+   202     0009                     WREG            equ	9	;# 
+   203     000A                     PCLATH          equ	10	;# 
+   204     000B                     INTCON          equ	11	;# 
+   205     000C                     PORTA           equ	12	;# 
+   206     0011                     PIR1            equ	17	;# 
+   207     0012                     PIR2            equ	18	;# 
+   208     0015                     TMR0            equ	21	;# 
+   209     0016                     TMR1            equ	22	;# 
+   210     0016                     TMR1L           equ	22	;# 
+   211     0017                     TMR1H           equ	23	;# 
+   212     0018                     T1CON           equ	24	;# 
+   213     0019                     T1GCON          equ	25	;# 
+   214     001A                     TMR2            equ	26	;# 
+   215     001B                     PR2             equ	27	;# 
+   216     001C                     T2CON           equ	28	;# 
+   217     001E                     CPSCON0         equ	30	;# 
+   218     001F                     CPSCON1         equ	31	;# 
+   219     008C                     TRISA           equ	140	;# 
+   220     0091                     PIE1            equ	145	;# 
+   221     0092                     PIE2            equ	146	;# 
+   222     0095                     OPTION_REG      equ	149	;# 
+   223     0096                     PCON            equ	150	;# 
+   224     0097                     WDTCON          equ	151	;# 
+   225     0098                     OSCTUNE         equ	152	;# 
+   226     0099                     OSCCON          equ	153	;# 
+   227     009A                     OSCSTAT         equ	154	;# 
+   228     009B                     ADRES           equ	155	;# 
+   229     009B                     ADRESL          equ	155	;# 
+   230     009C                     ADRESH          equ	156	;# 
+   231     009D                     ADCON0          equ	157	;# 
+   232     009E                     ADCON1          equ	158	;# 
+   233     010C                     LATA            equ	268	;# 
+   234     0111                     CM1CON0         equ	273	;# 
+   235     0112                     CM1CON1         equ	274	;# 
+   236     0115                     CMOUT           equ	277	;# 
+   237     0116                     BORCON          equ	278	;# 
+   238     0117                     FVRCON          equ	279	;# 
+   239     0118                     DACCON0         equ	280	;# 
+   240     0119                     DACCON1         equ	281	;# 
+   241     011A                     SRCON0          equ	282	;# 
+   242     011B                     SRCON1          equ	283	;# 
+   243     011D                     APFCON          equ	285	;# 
+   244     011D                     APFCON0         equ	285	;# 
+   245     018C                     ANSELA          equ	396	;# 
+   246     0191                     EEADR           equ	401	;# 
+   247     0191                     EEADRL          equ	401	;# 
+   248     0192                     EEADRH          equ	402	;# 
+   249     0193                     EEDAT           equ	403	;# 
+   250     0193                     EEDATL          equ	403	;# 
+   251     0193                     EEDATA          equ	403	;# 
+   252     0194                     EEDATH          equ	404	;# 
+   253     0195                     EECON1          equ	405	;# 
+   254     0196                     EECON2          equ	406	;# 
+   255     0197                     VREGCON         equ	407	;# 
+   256     0199                     RCREG           equ	409	;# 
+   257     019A                     TXREG           equ	410	;# 
+   258     019B                     SP1BRG          equ	411	;# 
+   259     019B                     SP1BRGL         equ	411	;# 
+   260     019B                     SPBRG           equ	411	;# 
+   261     019B                     SPBRGL          equ	411	;# 
+   262     019C                     SP1BRGH         equ	412	;# 
+   263     019C                     SPBRGH          equ	412	;# 
+   264     019D                     RCSTA           equ	413	;# 
+   265     019E                     TXSTA           equ	414	;# 
+   266     019F                     BAUDCON         equ	415	;# 
+   267     020C                     WPUA            equ	524	;# 
+   268     0211                     SSP1BUF         equ	529	;# 
+   269     0211                     SSPBUF          equ	529	;# 
+   270     0212                     SSP1ADD         equ	530	;# 
+   271     0212                     SSPADD          equ	530	;# 
+   272     0213                     SSP1MSK         equ	531	;# 
+   273     0213                     SSPMSK          equ	531	;# 
+   274     0214                     SSP1STAT        equ	532	;# 
+   275     0214                     SSPSTAT         equ	532	;# 
+   276     0215                     SSP1CON1        equ	533	;# 
+   277     0215                     SSPCON1         equ	533	;# 
+   278     0215                     SSPCON          equ	533	;# 
+   279     0216                     SSP1CON2        equ	534	;# 
+   280     0216                     SSPCON2         equ	534	;# 
+   281     0217                     SSP1CON3        equ	535	;# 
+   282     0217                     SSPCON3         equ	535	;# 
+   283     0291                     CCPR1           equ	657	;# 
+   284     0291                     CCPR1L          equ	657	;# 
+   285     0292                     CCPR1H          equ	658	;# 
+   286     0293                     CCP1CON         equ	659	;# 
+   287     0294                     PWM1CON         equ	660	;# 
+   288     0295                     CCP1AS          equ	661	;# 
+   289     0295                     ECCP1AS         equ	661	;# 
+   290     0296                     PSTR1CON        equ	662	;# 
+   291     0391                     IOCAP           equ	913	;# 
+   292     0392                     IOCAN           equ	914	;# 
+   293     0393                     IOCAF           equ	915	;# 
+   294     039A                     CLKRCON         equ	922	;# 
+   295     039C                     MDCON           equ	924	;# 
+   296     039D                     MDSRC           equ	925	;# 
+   297     039E                     MDCARL          equ	926	;# 
+   298     039F                     MDCARH          equ	927	;# 
+   299     0FE4                     STATUS_SHAD     equ	4068	;# 
+   300     0FE5                     WREG_SHAD       equ	4069	;# 
+   301     0FE6                     BSR_SHAD        equ	4070	;# 
+   302     0FE7                     PCLATH_SHAD     equ	4071	;# 
+   303     0FE8                     FSR0L_SHAD      equ	4072	;# 
+   304     0FE9                     FSR0H_SHAD      equ	4073	;# 
+   305     0FEA                     FSR1L_SHAD      equ	4074	;# 
+   306     0FEB                     FSR1H_SHAD      equ	4075	;# 
+   307     0FED                     STKPTR          equ	4077	;# 
+   308     0FEE                     TOSL            equ	4078	;# 
+   309     0FEF                     TOSH            equ	4079	;# 
+   310     0000                     INDF0           equ	0	;# 
+   311     0001                     INDF1           equ	1	;# 
+   312     0002                     PCL             equ	2	;# 
+   313     0003                     STATUS          equ	3	;# 
+   314     0004                     FSR0L           equ	4	;# 
+   315     0005                     FSR0H           equ	5	;# 
+   316     0006                     FSR1L           equ	6	;# 
+   317     0007                     FSR1H           equ	7	;# 
+   318     0008                     BSR             equ	8	;# 
+   319     0009                     WREG            equ	9	;# 
+   320     000A                     PCLATH          equ	10	;# 
+   321     000B                     INTCON          equ	11	;# 
+   322     000C                     PORTA           equ	12	;# 
+   323     0011                     PIR1            equ	17	;# 
+   324     0012                     PIR2            equ	18	;# 
+   325     0015                     TMR0            equ	21	;# 
+   326     0016                     TMR1            equ	22	;# 
+   327     0016                     TMR1L           equ	22	;# 
+   328     0017                     TMR1H           equ	23	;# 
+   329     0018                     T1CON           equ	24	;# 
+   330     0019                     T1GCON          equ	25	;# 
+   331     001A                     TMR2            equ	26	;# 
+   332     001B                     PR2             equ	27	;# 
+   333     001C                     T2CON           equ	28	;# 
+   334     001E                     CPSCON0         equ	30	;# 
+   335     001F                     CPSCON1         equ	31	;# 
+   336     008C                     TRISA           equ	140	;# 
+   337     0091                     PIE1            equ	145	;# 
+   338     0092                     PIE2            equ	146	;# 
+   339     0095                     OPTION_REG      equ	149	;# 
+   340     0096                     PCON            equ	150	;# 
+   341     0097                     WDTCON          equ	151	;# 
+   342     0098                     OSCTUNE         equ	152	;# 
+   343     0099                     OSCCON          equ	153	;# 
+   344     009A                     OSCSTAT         equ	154	;# 
+   345     009B                     ADRES           equ	155	;# 
+   346     009B                     ADRESL          equ	155	;# 
+   347     009C                     ADRESH          equ	156	;# 
+   348     009D                     ADCON0          equ	157	;# 
+   349     009E                     ADCON1          equ	158	;# 
+   350     010C                     LATA            equ	268	;# 
+   351     0111                     CM1CON0         equ	273	;# 
+   352     0112                     CM1CON1         equ	274	;# 
+   353     0115                     CMOUT           equ	277	;# 
+   354     0116                     BORCON          equ	278	;# 
+   355     0117                     FVRCON          equ	279	;# 
+   356     0118                     DACCON0         equ	280	;# 
+   357     0119                     DACCON1         equ	281	;# 
+   358     011A                     SRCON0          equ	282	;# 
+   359     011B                     SRCON1          equ	283	;# 
+   360     011D                     APFCON          equ	285	;# 
+   361     011D                     APFCON0         equ	285	;# 
+   362     018C                     ANSELA          equ	396	;# 
+   363     0191                     EEADR           equ	401	;# 
+   364     0191                     EEADRL          equ	401	;# 
+   365     0192                     EEADRH          equ	402	;# 
+   366     0193                     EEDAT           equ	403	;# 
+   367     0193                     EEDATL          equ	403	;# 
+   368     0193                     EEDATA          equ	403	;# 
+   369     0194                     EEDATH          equ	404	;# 
+   370     0195                     EECON1          equ	405	;# 
+   371     0196                     EECON2          equ	406	;# 
+   372     0197                     VREGCON         equ	407	;# 
+   373     0199                     RCREG           equ	409	;# 
+   374     019A                     TXREG           equ	410	;# 
+   375     019B                     SP1BRG          equ	411	;# 
+   376     019B                     SP1BRGL         equ	411	;# 
+   377     019B                     SPBRG           equ	411	;# 
+   378     019B                     SPBRGL          equ	411	;# 
+   379     019C                     SP1BRGH         equ	412	;# 
+   380     019C                     SPBRGH          equ	412	;# 
+   381     019D                     RCSTA           equ	413	;# 
+   382     019E                     TXSTA           equ	414	;# 
+   383     019F                     BAUDCON         equ	415	;# 
+   384     020C                     WPUA            equ	524	;# 
+   385     0211                     SSP1BUF         equ	529	;# 
+   386     0211                     SSPBUF          equ	529	;# 
+   387     0212                     SSP1ADD         equ	530	;# 
+   388     0212                     SSPADD          equ	530	;# 
+   389     0213                     SSP1MSK         equ	531	;# 
+   390     0213                     SSPMSK          equ	531	;# 
+   391     0214                     SSP1STAT        equ	532	;# 
+   392     0214                     SSPSTAT         equ	532	;# 
+   393     0215                     SSP1CON1        equ	533	;# 
+   394     0215                     SSPCON1         equ	533	;# 
+   395     0215                     SSPCON          equ	533	;# 
+   396     0216                     SSP1CON2        equ	534	;# 
+   397     0216                     SSPCON2         equ	534	;# 
+   398     0217                     SSP1CON3        equ	535	;# 
+   399     0217                     SSPCON3         equ	535	;# 
+   400     0291                     CCPR1           equ	657	;# 
+   401     0291                     CCPR1L          equ	657	;# 
+   402     0292                     CCPR1H          equ	658	;# 
+   403     0293                     CCP1CON         equ	659	;# 
+   404     0294                     PWM1CON         equ	660	;# 
+   405     0295                     CCP1AS          equ	661	;# 
+   406     0295                     ECCP1AS         equ	661	;# 
+   407     0296                     PSTR1CON        equ	662	;# 
+   408     0391                     IOCAP           equ	913	;# 
+   409     0392                     IOCAN           equ	914	;# 
+   410     0393                     IOCAF           equ	915	;# 
+   411     039A                     CLKRCON         equ	922	;# 
+   412     039C                     MDCON           equ	924	;# 
+   413     039D                     MDSRC           equ	925	;# 
+   414     039E                     MDCARL          equ	926	;# 
+   415     039F                     MDCARH          equ	927	;# 
+   416     0FE4                     STATUS_SHAD     equ	4068	;# 
+   417     0FE5                     WREG_SHAD       equ	4069	;# 
+   418     0FE6                     BSR_SHAD        equ	4070	;# 
+   419     0FE7                     PCLATH_SHAD     equ	4071	;# 
+   420     0FE8                     FSR0L_SHAD      equ	4072	;# 
+   421     0FE9                     FSR0H_SHAD      equ	4073	;# 
+   422     0FEA                     FSR1L_SHAD      equ	4074	;# 
+   423     0FEB                     FSR1H_SHAD      equ	4075	;# 
+   424     0FED                     STKPTR          equ	4077	;# 
+   425     0FEE                     TOSL            equ	4078	;# 
+   426     0FEF                     TOSH            equ	4079	;# 
+   427     0000                     INDF0           equ	0	;# 
+   428     0001                     INDF1           equ	1	;# 
+   429     0002                     PCL             equ	2	;# 
+   430     0003                     STATUS          equ	3	;# 
+   431     0004                     FSR0L           equ	4	;# 
+   432     0005                     FSR0H           equ	5	;# 
+   433     0006                     FSR1L           equ	6	;# 
+   434     0007                     FSR1H           equ	7	;# 
+   435     0008                     BSR             equ	8	;# 
+   436     0009                     WREG            equ	9	;# 
+   437     000A                     PCLATH          equ	10	;# 
+   438     000B                     INTCON          equ	11	;# 
+   439     000C                     PORTA           equ	12	;# 
+   440     0011                     PIR1            equ	17	;# 
+   441     0012                     PIR2            equ	18	;# 
+   442     0015                     TMR0            equ	21	;# 
+   443     0016                     TMR1            equ	22	;# 
+   444     0016                     TMR1L           equ	22	;# 
+   445     0017                     TMR1H           equ	23	;# 
+   446     0018                     T1CON           equ	24	;# 
+   447     0019                     T1GCON          equ	25	;# 
+   448     001A                     TMR2            equ	26	;# 
+   449     001B                     PR2             equ	27	;# 
+   450     001C                     T2CON           equ	28	;# 
+   451     001E                     CPSCON0         equ	30	;# 
+   452     001F                     CPSCON1         equ	31	;# 
+   453     008C                     TRISA           equ	140	;# 
+   454     0091                     PIE1            equ	145	;# 
+   455     0092                     PIE2            equ	146	;# 
+   456     0095                     OPTION_REG      equ	149	;# 
+   457     0096                     PCON            equ	150	;# 
+   458     0097                     WDTCON          equ	151	;# 
+   459     0098                     OSCTUNE         equ	152	;# 
+   460     0099                     OSCCON          equ	153	;# 
+   461     009A                     OSCSTAT         equ	154	;# 
+   462     009B                     ADRES           equ	155	;# 
+   463     009B                     ADRESL          equ	155	;# 
+   464     009C                     ADRESH          equ	156	;# 
+   465     009D                     ADCON0          equ	157	;# 
+   466     009E                     ADCON1          equ	158	;# 
+   467     010C                     LATA            equ	268	;# 
+   468     0111                     CM1CON0         equ	273	;# 
+   469     0112                     CM1CON1         equ	274	;# 
+   470     0115                     CMOUT           equ	277	;# 
+   471     0116                     BORCON          equ	278	;# 
+   472     0117                     FVRCON          equ	279	;# 
+   473     0118                     DACCON0         equ	280	;# 
+   474     0119                     DACCON1         equ	281	;# 
+   475     011A                     SRCON0          equ	282	;# 
+   476     011B                     SRCON1          equ	283	;# 
+   477     011D                     APFCON          equ	285	;# 
+   478     011D                     APFCON0         equ	285	;# 
+   479     018C                     ANSELA          equ	396	;# 
+   480     0191                     EEADR           equ	401	;# 
+   481     0191                     EEADRL          equ	401	;# 
+   482     0192                     EEADRH          equ	402	;# 
+   483     0193                     EEDAT           equ	403	;# 
+   484     0193                     EEDATL          equ	403	;# 
+   485     0193                     EEDATA          equ	403	;# 
+   486     0194                     EEDATH          equ	404	;# 
+   487     0195                     EECON1          equ	405	;# 
+   488     0196                     EECON2          equ	406	;# 
+   489     0197                     VREGCON         equ	407	;# 
+   490     0199                     RCREG           equ	409	;# 
+   491     019A                     TXREG           equ	410	;# 
+   492     019B                     SP1BRG          equ	411	;# 
+   493     019B                     SP1BRGL         equ	411	;# 
+   494     019B                     SPBRG           equ	411	;# 
+   495     019B                     SPBRGL          equ	411	;# 
+   496     019C                     SP1BRGH         equ	412	;# 
+   497     019C                     SPBRGH          equ	412	;# 
+   498     019D                     RCSTA           equ	413	;# 
+   499     019E                     TXSTA           equ	414	;# 
+   500     019F                     BAUDCON         equ	415	;# 
+   501     020C                     WPUA            equ	524	;# 
+   502     0211                     SSP1BUF         equ	529	;# 
+   503     0211                     SSPBUF          equ	529	;# 
+   504     0212                     SSP1ADD         equ	530	;# 
+   505     0212                     SSPADD          equ	530	;# 
+   506     0213                     SSP1MSK         equ	531	;# 
+   507     0213                     SSPMSK          equ	531	;# 
+   508     0214                     SSP1STAT        equ	532	;# 
+   509     0214                     SSPSTAT         equ	532	;# 
+   510     0215                     SSP1CON1        equ	533	;# 
+   511     0215                     SSPCON1         equ	533	;# 
+   512     0215                     SSPCON          equ	533	;# 
+   513     0216                     SSP1CON2        equ	534	;# 
+   514     0216                     SSPCON2         equ	534	;# 
+   515     0217                     SSP1CON3        equ	535	;# 
+   516     0217                     SSPCON3         equ	535	;# 
+   517     0291                     CCPR1           equ	657	;# 
+   518     0291                     CCPR1L          equ	657	;# 
+   519     0292                     CCPR1H          equ	658	;# 
+   520     0293                     CCP1CON         equ	659	;# 
+   521     0294                     PWM1CON         equ	660	;# 
+   522     0295                     CCP1AS          equ	661	;# 
+   523     0295                     ECCP1AS         equ	661	;# 
+   524     0296                     PSTR1CON        equ	662	;# 
+   525     0391                     IOCAP           equ	913	;# 
+   526     0392                     IOCAN           equ	914	;# 
+   527     0393                     IOCAF           equ	915	;# 
+   528     039A                     CLKRCON         equ	922	;# 
+   529     039C                     MDCON           equ	924	;# 
+   530     039D                     MDSRC           equ	925	;# 
+   531     039E                     MDCARL          equ	926	;# 
+   532     039F                     MDCARH          equ	927	;# 
+   533     0FE4                     STATUS_SHAD     equ	4068	;# 
+   534     0FE5                     WREG_SHAD       equ	4069	;# 
+   535     0FE6                     BSR_SHAD        equ	4070	;# 
+   536     0FE7                     PCLATH_SHAD     equ	4071	;# 
+   537     0FE8                     FSR0L_SHAD      equ	4072	;# 
+   538     0FE9                     FSR0H_SHAD      equ	4073	;# 
+   539     0FEA                     FSR1L_SHAD      equ	4074	;# 
+   540     0FEB                     FSR1H_SHAD      equ	4075	;# 
+   541     0FED                     STKPTR          equ	4077	;# 
+   542     0FEE                     TOSL            equ	4078	;# 
+   543     0FEF                     TOSH            equ	4079	;# 
+   544     0000                     INDF0           equ	0	;# 
+   545     0001                     INDF1           equ	1	;# 
+   546     0002                     PCL             equ	2	;# 
+   547     0003                     STATUS          equ	3	;# 
+   548     0004                     FSR0L           equ	4	;# 
+   549     0005                     FSR0H           equ	5	;# 
+   550     0006                     FSR1L           equ	6	;# 
+   551     0007                     FSR1H           equ	7	;# 
+   552     0008                     BSR             equ	8	;# 
+   553     0009                     WREG            equ	9	;# 
+   554     000A                     PCLATH          equ	10	;# 
+   555     000B                     INTCON          equ	11	;# 
+   556     000C                     PORTA           equ	12	;# 
+   557     0011                     PIR1            equ	17	;# 
+   558     0012                     PIR2            equ	18	;# 
+   559     0015                     TMR0            equ	21	;# 
+   560     0016                     TMR1            equ	22	;# 
+   561     0016                     TMR1L           equ	22	;# 
+   562     0017                     TMR1H           equ	23	;# 
+   563     0018                     T1CON           equ	24	;# 
+   564     0019                     T1GCON          equ	25	;# 
+   565     001A                     TMR2            equ	26	;# 
+   566     001B                     PR2             equ	27	;# 
+   567     001C                     T2CON           equ	28	;# 
+   568     001E                     CPSCON0         equ	30	;# 
+   569     001F                     CPSCON1         equ	31	;# 
+   570     008C                     TRISA           equ	140	;# 
+   571     0091                     PIE1            equ	145	;# 
+   572     0092                     PIE2            equ	146	;# 
+   573     0095                     OPTION_REG      equ	149	;# 
+   574     0096                     PCON            equ	150	;# 
+   575     0097                     WDTCON          equ	151	;# 
+   576     0098                     OSCTUNE         equ	152	;# 
+   577     0099                     OSCCON          equ	153	;# 
+   578     009A                     OSCSTAT         equ	154	;# 
+   579     009B                     ADRES           equ	155	;# 
+   580     009B                     ADRESL          equ	155	;# 
+   581     009C                     ADRESH          equ	156	;# 
+   582     009D                     ADCON0          equ	157	;# 
+   583     009E                     ADCON1          equ	158	;# 
+   584     010C                     LATA            equ	268	;# 
+   585     0111                     CM1CON0         equ	273	;# 
+   586     0112                     CM1CON1         equ	274	;# 
+   587     0115                     CMOUT           equ	277	;# 
+   588     0116                     BORCON          equ	278	;# 
+   589     0117                     FVRCON          equ	279	;# 
+   590     0118                     DACCON0         equ	280	;# 
+   591     0119                     DACCON1         equ	281	;# 
+   592     011A                     SRCON0          equ	282	;# 
+   593     011B                     SRCON1          equ	283	;# 
+   594     011D                     APFCON          equ	285	;# 
+   595     011D                     APFCON0         equ	285	;# 
+   596     018C                     ANSELA          equ	396	;# 
+   597     0191                     EEADR           equ	401	;# 
+   598     0191                     EEADRL          equ	401	;# 
+   599     0192                     EEADRH          equ	402	;# 
+   600     0193                     EEDAT           equ	403	;# 
+   601     0193                     EEDATL          equ	403	;# 
+   602     0193                     EEDATA          equ	403	;# 
+   603     0194                     EEDATH          equ	404	;# 
+   604     0195                     EECON1          equ	405	;# 
+   605     0196                     EECON2          equ	406	;# 
+   606     0197                     VREGCON         equ	407	;# 
+   607     0199                     RCREG           equ	409	;# 
+   608     019A                     TXREG           equ	410	;# 
+   609     019B                     SP1BRG          equ	411	;# 
+   610     019B                     SP1BRGL         equ	411	;# 
+   611     019B                     SPBRG           equ	411	;# 
+   612     019B                     SPBRGL          equ	411	;# 
+   613     019C                     SP1BRGH         equ	412	;# 
+   614     019C                     SPBRGH          equ	412	;# 
+   615     019D                     RCSTA           equ	413	;# 
+   616     019E                     TXSTA           equ	414	;# 
+   617     019F                     BAUDCON         equ	415	;# 
+   618     020C                     WPUA            equ	524	;# 
+   619     0211                     SSP1BUF         equ	529	;# 
+   620     0211                     SSPBUF          equ	529	;# 
+   621     0212                     SSP1ADD         equ	530	;# 
+   622     0212                     SSPADD          equ	530	;# 
+   623     0213                     SSP1MSK         equ	531	;# 
+   624     0213                     SSPMSK          equ	531	;# 
+   625     0214                     SSP1STAT        equ	532	;# 
+   626     0214                     SSPSTAT         equ	532	;# 
+   627     0215                     SSP1CON1        equ	533	;# 
+   628     0215                     SSPCON1         equ	533	;# 
+   629     0215                     SSPCON          equ	533	;# 
+   630     0216                     SSP1CON2        equ	534	;# 
+   631     0216                     SSPCON2         equ	534	;# 
+   632     0217                     SSP1CON3        equ	535	;# 
+   633     0217                     SSPCON3         equ	535	;# 
+   634     0291                     CCPR1           equ	657	;# 
+   635     0291                     CCPR1L          equ	657	;# 
+   636     0292                     CCPR1H          equ	658	;# 
+   637     0293                     CCP1CON         equ	659	;# 
+   638     0294                     PWM1CON         equ	660	;# 
+   639     0295                     CCP1AS          equ	661	;# 
+   640     0295                     ECCP1AS         equ	661	;# 
+   641     0296                     PSTR1CON        equ	662	;# 
+   642     0391                     IOCAP           equ	913	;# 
+   643     0392                     IOCAN           equ	914	;# 
+   644     0393                     IOCAF           equ	915	;# 
+   645     039A                     CLKRCON         equ	922	;# 
+   646     039C                     MDCON           equ	924	;# 
+   647     039D                     MDSRC           equ	925	;# 
+   648     039E                     MDCARL          equ	926	;# 
+   649     039F                     MDCARH          equ	927	;# 
+   650     0FE4                     STATUS_SHAD     equ	4068	;# 
+   651     0FE5                     WREG_SHAD       equ	4069	;# 
+   652     0FE6                     BSR_SHAD        equ	4070	;# 
+   653     0FE7                     PCLATH_SHAD     equ	4071	;# 
+   654     0FE8                     FSR0L_SHAD      equ	4072	;# 
+   655     0FE9                     FSR0H_SHAD      equ	4073	;# 
+   656     0FEA                     FSR1L_SHAD      equ	4074	;# 
+   657     0FEB                     FSR1H_SHAD      equ	4075	;# 
+   658     0FED                     STKPTR          equ	4077	;# 
+   659     0FEE                     TOSL            equ	4078	;# 
+   660     0FEF                     TOSH            equ	4079	;# 
+   661     0000                     INDF0           equ	0	;# 
+   662     0001                     INDF1           equ	1	;# 
+   663     0002                     PCL             equ	2	;# 
+   664     0003                     STATUS          equ	3	;# 
+   665     0004                     FSR0L           equ	4	;# 
+   666     0005                     FSR0H           equ	5	;# 
+   667     0006                     FSR1L           equ	6	;# 
+   668     0007                     FSR1H           equ	7	;# 
+   669     0008                     BSR             equ	8	;# 
+   670     0009                     WREG            equ	9	;# 
+   671     000A                     PCLATH          equ	10	;# 
+   672     000B                     INTCON          equ	11	;# 
+   673     000C                     PORTA           equ	12	;# 
+   674     0011                     PIR1            equ	17	;# 
+   675     0012                     PIR2            equ	18	;# 
+   676     0015                     TMR0            equ	21	;# 
+   677     0016                     TMR1            equ	22	;# 
+   678     0016                     TMR1L           equ	22	;# 
+   679     0017                     TMR1H           equ	23	;# 
+   680     0018                     T1CON           equ	24	;# 
+   681     0019                     T1GCON          equ	25	;# 
+   682     001A                     TMR2            equ	26	;# 
+   683     001B                     PR2             equ	27	;# 
+   684     001C                     T2CON           equ	28	;# 
+   685     001E                     CPSCON0         equ	30	;# 
+   686     001F                     CPSCON1         equ	31	;# 
+   687     008C                     TRISA           equ	140	;# 
+   688     0091                     PIE1            equ	145	;# 
+   689     0092                     PIE2            equ	146	;# 
+   690     0095                     OPTION_REG      equ	149	;# 
+   691     0096                     PCON            equ	150	;# 
+   692     0097                     WDTCON          equ	151	;# 
+   693     0098                     OSCTUNE         equ	152	;# 
+   694     0099                     OSCCON          equ	153	;# 
+   695     009A                     OSCSTAT         equ	154	;# 
+   696     009B                     ADRES           equ	155	;# 
+   697     009B                     ADRESL          equ	155	;# 
+   698     009C                     ADRESH          equ	156	;# 
+   699     009D                     ADCON0          equ	157	;# 
+   700     009E                     ADCON1          equ	158	;# 
+   701     010C                     LATA            equ	268	;# 
+   702     0111                     CM1CON0         equ	273	;# 
+   703     0112                     CM1CON1         equ	274	;# 
+   704     0115                     CMOUT           equ	277	;# 
+   705     0116                     BORCON          equ	278	;# 
+   706     0117                     FVRCON          equ	279	;# 
+   707     0118                     DACCON0         equ	280	;# 
+   708     0119                     DACCON1         equ	281	;# 
+   709     011A                     SRCON0          equ	282	;# 
+   710     011B                     SRCON1          equ	283	;# 
+   711     011D                     APFCON          equ	285	;# 
+   712     011D                     APFCON0         equ	285	;# 
+   713     018C                     ANSELA          equ	396	;# 
+   714     0191                     EEADR           equ	401	;# 
+   715     0191                     EEADRL          equ	401	;# 
+   716     0192                     EEADRH          equ	402	;# 
+   717     0193                     EEDAT           equ	403	;# 
+   718     0193                     EEDATL          equ	403	;# 
+   719     0193                     EEDATA          equ	403	;# 
+   720     0194                     EEDATH          equ	404	;# 
+   721     0195                     EECON1          equ	405	;# 
+   722     0196                     EECON2          equ	406	;# 
+   723     0197                     VREGCON         equ	407	;# 
+   724     0199                     RCREG           equ	409	;# 
+   725     019A                     TXREG           equ	410	;# 
+   726     019B                     SP1BRG          equ	411	;# 
+   727     019B                     SP1BRGL         equ	411	;# 
+   728     019B                     SPBRG           equ	411	;# 
+   729     019B                     SPBRGL          equ	411	;# 
+   730     019C                     SP1BRGH         equ	412	;# 
+   731     019C                     SPBRGH          equ	412	;# 
+   732     019D                     RCSTA           equ	413	;# 
+   733     019E                     TXSTA           equ	414	;# 
+   734     019F                     BAUDCON         equ	415	;# 
+   735     020C                     WPUA            equ	524	;# 
+   736     0211                     SSP1BUF         equ	529	;# 
+   737     0211                     SSPBUF          equ	529	;# 
+   738     0212                     SSP1ADD         equ	530	;# 
+   739     0212                     SSPADD          equ	530	;# 
+   740     0213                     SSP1MSK         equ	531	;# 
+   741     0213                     SSPMSK          equ	531	;# 
+   742     0214                     SSP1STAT        equ	532	;# 
+   743     0214                     SSPSTAT         equ	532	;# 
+   744     0215                     SSP1CON1        equ	533	;# 
+   745     0215                     SSPCON1         equ	533	;# 
+   746     0215                     SSPCON          equ	533	;# 
+   747     0216                     SSP1CON2        equ	534	;# 
+   748     0216                     SSPCON2         equ	534	;# 
+   749     0217                     SSP1CON3        equ	535	;# 
+   750     0217                     SSPCON3         equ	535	;# 
+   751     0291                     CCPR1           equ	657	;# 
+   752     0291                     CCPR1L          equ	657	;# 
+   753     0292                     CCPR1H          equ	658	;# 
+   754     0293                     CCP1CON         equ	659	;# 
+   755     0294                     PWM1CON         equ	660	;# 
+   756     0295                     CCP1AS          equ	661	;# 
+   757     0295                     ECCP1AS         equ	661	;# 
+   758     0296                     PSTR1CON        equ	662	;# 
+   759     0391                     IOCAP           equ	913	;# 
+   760     0392                     IOCAN           equ	914	;# 
+   761     0393                     IOCAF           equ	915	;# 
+   762     039A                     CLKRCON         equ	922	;# 
+   763     039C                     MDCON           equ	924	;# 
+   764     039D                     MDSRC           equ	925	;# 
+   765     039E                     MDCARL          equ	926	;# 
+   766     039F                     MDCARH          equ	927	;# 
+   767     0FE4                     STATUS_SHAD     equ	4068	;# 
+   768     0FE5                     WREG_SHAD       equ	4069	;# 
+   769     0FE6                     BSR_SHAD        equ	4070	;# 
+   770     0FE7                     PCLATH_SHAD     equ	4071	;# 
+   771     0FE8                     FSR0L_SHAD      equ	4072	;# 
+   772     0FE9                     FSR0H_SHAD      equ	4073	;# 
+   773     0FEA                     FSR1L_SHAD      equ	4074	;# 
+   774     0FEB                     FSR1H_SHAD      equ	4075	;# 
+   775     0FED                     STKPTR          equ	4077	;# 
+   776     0FEE                     TOSL            equ	4078	;# 
+   777     0FEF                     TOSH            equ	4079	;# 
+   778     0000                     INDF0           equ	0	;# 
+   779     0001                     INDF1           equ	1	;# 
+   780     0002                     PCL             equ	2	;# 
+   781     0003                     STATUS          equ	3	;# 
+   782     0004                     FSR0L           equ	4	;# 
+   783     0005                     FSR0H           equ	5	;# 
+   784     0006                     FSR1L           equ	6	;# 
+   785     0007                     FSR1H           equ	7	;# 
+   786     0008                     BSR             equ	8	;# 
+   787     0009                     WREG            equ	9	;# 
+   788     000A                     PCLATH          equ	10	;# 
+   789     000B                     INTCON          equ	11	;# 
+   790     000C                     PORTA           equ	12	;# 
+   791     0011                     PIR1            equ	17	;# 
+   792     0012                     PIR2            equ	18	;# 
+   793     0015                     TMR0            equ	21	;# 
+   794     0016                     TMR1            equ	22	;# 
+   795     0016                     TMR1L           equ	22	;# 
+   796     0017                     TMR1H           equ	23	;# 
+   797     0018                     T1CON           equ	24	;# 
+   798     0019                     T1GCON          equ	25	;# 
+   799     001A                     TMR2            equ	26	;# 
+   800     001B                     PR2             equ	27	;# 
+   801     001C                     T2CON           equ	28	;# 
+   802     001E                     CPSCON0         equ	30	;# 
+   803     001F                     CPSCON1         equ	31	;# 
+   804     008C                     TRISA           equ	140	;# 
+   805     0091                     PIE1            equ	145	;# 
+   806     0092                     PIE2            equ	146	;# 
+   807     0095                     OPTION_REG      equ	149	;# 
+   808     0096                     PCON            equ	150	;# 
+   809     0097                     WDTCON          equ	151	;# 
+   810     0098                     OSCTUNE         equ	152	;# 
+   811     0099                     OSCCON          equ	153	;# 
+   812     009A                     OSCSTAT         equ	154	;# 
+   813     009B                     ADRES           equ	155	;# 
+   814     009B                     ADRESL          equ	155	;# 
+   815     009C                     ADRESH          equ	156	;# 
+   816     009D                     ADCON0          equ	157	;# 
+   817     009E                     ADCON1          equ	158	;# 
+   818     010C                     LATA            equ	268	;# 
+   819     0111                     CM1CON0         equ	273	;# 
+   820     0112                     CM1CON1         equ	274	;# 
+   821     0115                     CMOUT           equ	277	;# 
+   822     0116                     BORCON          equ	278	;# 
+   823     0117                     FVRCON          equ	279	;# 
+   824     0118                     DACCON0         equ	280	;# 
+   825     0119                     DACCON1         equ	281	;# 
+   826     011A                     SRCON0          equ	282	;# 
+   827     011B                     SRCON1          equ	283	;# 
+   828     011D                     APFCON          equ	285	;# 
+   829     011D                     APFCON0         equ	285	;# 
+   830     018C                     ANSELA          equ	396	;# 
+   831     0191                     EEADR           equ	401	;# 
+   832     0191                     EEADRL          equ	401	;# 
+   833     0192                     EEADRH          equ	402	;# 
+   834     0193                     EEDAT           equ	403	;# 
+   835     0193                     EEDATL          equ	403	;# 
+   836     0193                     EEDATA          equ	403	;# 
+   837     0194                     EEDATH          equ	404	;# 
+   838     0195                     EECON1          equ	405	;# 
+   839     0196                     EECON2          equ	406	;# 
+   840     0197                     VREGCON         equ	407	;# 
+   841     0199                     RCREG           equ	409	;# 
+   842     019A                     TXREG           equ	410	;# 
+   843     019B                     SP1BRG          equ	411	;# 
+   844     019B                     SP1BRGL         equ	411	;# 
+   845     019B                     SPBRG           equ	411	;# 
+   846     019B                     SPBRGL          equ	411	;# 
+   847     019C                     SP1BRGH         equ	412	;# 
+   848     019C                     SPBRGH          equ	412	;# 
+   849     019D                     RCSTA           equ	413	;# 
+   850     019E                     TXSTA           equ	414	;# 
+   851     019F                     BAUDCON         equ	415	;# 
+   852     020C                     WPUA            equ	524	;# 
+   853     0211                     SSP1BUF         equ	529	;# 
+   854     0211                     SSPBUF          equ	529	;# 
+   855     0212                     SSP1ADD         equ	530	;# 
+   856     0212                     SSPADD          equ	530	;# 
+   857     0213                     SSP1MSK         equ	531	;# 
+   858     0213                     SSPMSK          equ	531	;# 
+   859     0214                     SSP1STAT        equ	532	;# 
+   860     0214                     SSPSTAT         equ	532	;# 
+   861     0215                     SSP1CON1        equ	533	;# 
+   862     0215                     SSPCON1         equ	533	;# 
+   863     0215                     SSPCON          equ	533	;# 
+   864     0216                     SSP1CON2        equ	534	;# 
+   865     0216                     SSPCON2         equ	534	;# 
+   866     0217                     SSP1CON3        equ	535	;# 
+   867     0217                     SSPCON3         equ	535	;# 
+   868     0291                     CCPR1           equ	657	;# 
+   869     0291                     CCPR1L          equ	657	;# 
+   870     0292                     CCPR1H          equ	658	;# 
+   871     0293                     CCP1CON         equ	659	;# 
+   872     0294                     PWM1CON         equ	660	;# 
+   873     0295                     CCP1AS          equ	661	;# 
+   874     0295                     ECCP1AS         equ	661	;# 
+   875     0296                     PSTR1CON        equ	662	;# 
+   876     0391                     IOCAP           equ	913	;# 
+   877     0392                     IOCAN           equ	914	;# 
+   878     0393                     IOCAF           equ	915	;# 
+   879     039A                     CLKRCON         equ	922	;# 
+   880     039C                     MDCON           equ	924	;# 
+   881     039D                     MDSRC           equ	925	;# 
+   882     039E                     MDCARL          equ	926	;# 
+   883     039F                     MDCARH          equ	927	;# 
+   884     0FE4                     STATUS_SHAD     equ	4068	;# 
+   885     0FE5                     WREG_SHAD       equ	4069	;# 
+   886     0FE6                     BSR_SHAD        equ	4070	;# 
+   887     0FE7                     PCLATH_SHAD     equ	4071	;# 
+   888     0FE8                     FSR0L_SHAD      equ	4072	;# 
+   889     0FE9                     FSR0H_SHAD      equ	4073	;# 
+   890     0FEA                     FSR1L_SHAD      equ	4074	;# 
+   891     0FEB                     FSR1H_SHAD      equ	4075	;# 
+   892     0FED                     STKPTR          equ	4077	;# 
+   893     0FEE                     TOSL            equ	4078	;# 
+   894     0FEF                     TOSH            equ	4079	;# 
+   895     0000                     INDF0           equ	0	;# 
+   896     0001                     INDF1           equ	1	;# 
+   897     0002                     PCL             equ	2	;# 
+   898     0003                     STATUS          equ	3	;# 
+   899     0004                     FSR0L           equ	4	;# 
+   900     0005                     FSR0H           equ	5	;# 
+   901     0006                     FSR1L           equ	6	;# 
+   902     0007                     FSR1H           equ	7	;# 
+   903     0008                     BSR             equ	8	;# 
+   904     0009                     WREG            equ	9	;# 
+   905     000A                     PCLATH          equ	10	;# 
+   906     000B                     INTCON          equ	11	;# 
+   907     000C                     PORTA           equ	12	;# 
+   908     0011                     PIR1            equ	17	;# 
+   909     0012                     PIR2            equ	18	;# 
+   910     0015                     TMR0            equ	21	;# 
+   911     0016                     TMR1            equ	22	;# 
+   912     0016                     TMR1L           equ	22	;# 
+   913     0017                     TMR1H           equ	23	;# 
+   914     0018                     T1CON           equ	24	;# 
+   915     0019                     T1GCON          equ	25	;# 
+   916     001A                     TMR2            equ	26	;# 
+   917     001B                     PR2             equ	27	;# 
+   918     001C                     T2CON           equ	28	;# 
+   919     001E                     CPSCON0         equ	30	;# 
+   920     001F                     CPSCON1         equ	31	;# 
+   921     008C                     TRISA           equ	140	;# 
+   922     0091                     PIE1            equ	145	;# 
+   923     0092                     PIE2            equ	146	;# 
+   924     0095                     OPTION_REG      equ	149	;# 
+   925     0096                     PCON            equ	150	;# 
+   926     0097                     WDTCON          equ	151	;# 
+   927     0098                     OSCTUNE         equ	152	;# 
+   928     0099                     OSCCON          equ	153	;# 
+   929     009A                     OSCSTAT         equ	154	;# 
+   930     009B                     ADRES           equ	155	;# 
+   931     009B                     ADRESL          equ	155	;# 
+   932     009C                     ADRESH          equ	156	;# 
+   933     009D                     ADCON0          equ	157	;# 
+   934     009E                     ADCON1          equ	158	;# 
+   935     010C                     LATA            equ	268	;# 
+   936     0111                     CM1CON0         equ	273	;# 
+   937     0112                     CM1CON1         equ	274	;# 
+   938     0115                     CMOUT           equ	277	;# 
+   939     0116                     BORCON          equ	278	;# 
+   940     0117                     FVRCON          equ	279	;# 
+   941     0118                     DACCON0         equ	280	;# 
+   942     0119                     DACCON1         equ	281	;# 
+   943     011A                     SRCON0          equ	282	;# 
+   944     011B                     SRCON1          equ	283	;# 
+   945     011D                     APFCON          equ	285	;# 
+   946     011D                     APFCON0         equ	285	;# 
+   947     018C                     ANSELA          equ	396	;# 
+   948     0191                     EEADR           equ	401	;# 
+   949     0191                     EEADRL          equ	401	;# 
+   950     0192                     EEADRH          equ	402	;# 
+   951     0193                     EEDAT           equ	403	;# 
+   952     0193                     EEDATL          equ	403	;# 
+   953     0193                     EEDATA          equ	403	;# 
+   954     0194                     EEDATH          equ	404	;# 
+   955     0195                     EECON1          equ	405	;# 
+   956     0196                     EECON2          equ	406	;# 
+   957     0197                     VREGCON         equ	407	;# 
+   958     0199                     RCREG           equ	409	;# 
+   959     019A                     TXREG           equ	410	;# 
+   960     019B                     SP1BRG          equ	411	;# 
+   961     019B                     SP1BRGL         equ	411	;# 
+   962     019B                     SPBRG           equ	411	;# 
+   963     019B                     SPBRGL          equ	411	;# 
+   964     019C                     SP1BRGH         equ	412	;# 
+   965     019C                     SPBRGH          equ	412	;# 
+   966     019D                     RCSTA           equ	413	;# 
+   967     019E                     TXSTA           equ	414	;# 
+   968     019F                     BAUDCON         equ	415	;# 
+   969     020C                     WPUA            equ	524	;# 
+   970     0211                     SSP1BUF         equ	529	;# 
+   971     0211                     SSPBUF          equ	529	;# 
+   972     0212                     SSP1ADD         equ	530	;# 
+   973     0212                     SSPADD          equ	530	;# 
+   974     0213                     SSP1MSK         equ	531	;# 
+   975     0213                     SSPMSK          equ	531	;# 
+   976     0214                     SSP1STAT        equ	532	;# 
+   977     0214                     SSPSTAT         equ	532	;# 
+   978     0215                     SSP1CON1        equ	533	;# 
+   979     0215                     SSPCON1         equ	533	;# 
+   980     0215                     SSPCON          equ	533	;# 
+   981     0216                     SSP1CON2        equ	534	;# 
+   982     0216                     SSPCON2         equ	534	;# 
+   983     0217                     SSP1CON3        equ	535	;# 
+   984     0217                     SSPCON3         equ	535	;# 
+   985     0291                     CCPR1           equ	657	;# 
+   986     0291                     CCPR1L          equ	657	;# 
+   987     0292                     CCPR1H          equ	658	;# 
+   988     0293                     CCP1CON         equ	659	;# 
+   989     0294                     PWM1CON         equ	660	;# 
+   990     0295                     CCP1AS          equ	661	;# 
+   991     0295                     ECCP1AS         equ	661	;# 
+   992     0296                     PSTR1CON        equ	662	;# 
+   993     0391                     IOCAP           equ	913	;# 
+   994     0392                     IOCAN           equ	914	;# 
+   995     0393                     IOCAF           equ	915	;# 
+   996     039A                     CLKRCON         equ	922	;# 
+   997     039C                     MDCON           equ	924	;# 
+   998     039D                     MDSRC           equ	925	;# 
+   999     039E                     MDCARL          equ	926	;# 
+  1000     039F                     MDCARH          equ	927	;# 
+  1001     0FE4                     STATUS_SHAD     equ	4068	;# 
+  1002     0FE5                     WREG_SHAD       equ	4069	;# 
+  1003     0FE6                     BSR_SHAD        equ	4070	;# 
+  1004     0FE7                     PCLATH_SHAD     equ	4071	;# 
+  1005     0FE8                     FSR0L_SHAD      equ	4072	;# 
+  1006     0FE9                     FSR0H_SHAD      equ	4073	;# 
+  1007     0FEA                     FSR1L_SHAD      equ	4074	;# 
+  1008     0FEB                     FSR1H_SHAD      equ	4075	;# 
+  1009     0FED                     STKPTR          equ	4077	;# 
+  1010     0FEE                     TOSL            equ	4078	;# 
+  1011     0FEF                     TOSH            equ	4079	;# 
+  1012                           
+  1013 ;; Function _INT_DefaultInterruptHandler is unused but had its address taken
+  1014     0000                     _INT_DefaultInterruptHandler equ	0
+  1015                           
+  1016 ;; Function _TMR1_DefaultOverflowCallback is unused but had its address taken
+  1017     0000                     _TMR1_DefaultOverflowCallback equ	0
+  1018                           
+  1019 ;; Function _TMR1_DefaultGateCallback is unused but had its address taken
+  1020     0000                     _TMR1_DefaultGateCallback equ	0
+  1021                           
+  1022                           	psect	idataBANK0
+  1023     0124                     __pidataBANK0:
+  1024                           
+  1025                           ;initializer for _largura_pulso
+  1026     0124  343E               	retlw	62
+  1027     0125  3403               	retlw	3
+  1028                           
+  1029                           	psect	nvCOMMON
+  1030     0076                     __pnvCOMMON:
+  1031     0076                     _INT_InterruptHandler:
+  1032     0076                     	ds	2
+  1033                           
+  1034                           	psect	nvBANK0
+  1035     0028                     __pnvBANK0:
+  1036     0028                     _TMR1_GateCallback:
+  1037     0028                     	ds	2
+  1038     002A                     _TMR1_OverflowCallback:
+  1039     002A                     	ds	2
+  1040     000C                     _PORTAbits      set	12
+  1041     0019                     _T1GCONbits     set	25
+  1042     0018                     _T1CON          set	24
+  1043     0019                     _T1GCON         set	25
+  1044     0016                     _TMR1L          set	22
+  1045     0017                     _TMR1H          set	23
+  1046     0018                     _T1CONbits      set	24
+  1047     0011                     _PIR1bits       set	17
+  1048     000B                     _INTCONbits     set	11
+  1049     008C                     _TRISA          set	140
+  1050     0098                     _OSCTUNE        set	152
+  1051     0099                     _OSCCON         set	153
+  1052     0091                     _PIE1bits       set	145
+  1053     0095                     _OPTION_REGbits set	149
+  1054     011D                     _APFCON         set	285
+  1055     010C                     _LATA           set	268
+  1056     0116                     _BORCON         set	278
+  1057     018C                     _ANSELA         set	396
+  1058     020C                     _WPUA           set	524
+  1059     0291                     _CCPR1          set	657
+  1060     0291                     _CCPR1L         set	657
+  1061     0292                     _CCPR1H         set	658
+  1062     0293                     _CCP1CON        set	659
+  1063     0393                     _IOCAF          set	915
+  1064     0392                     _IOCAN          set	914
+  1065     0391                     _IOCAP          set	913
+  1066                           
+  1067                           	psect	cinit
+  1068     001F                     start_initialization:	
+  1069                           ; #config settings
+  1070                           
+  1071     001F                     __initialization:
+  1072                           
+  1073                           ; Initialize objects allocated to BANK0
+  1074     001F  3181  2124  3180   	fcall	__pidataBANK0	;fetch initializer
+  1075     0022  00AC               	movwf	__pdataBANK0& (0+127)
+  1076     0023  3181  2125  3180   	fcall	__pidataBANK0+1	;fetch initializer
+  1077     0026  00AD               	movwf	(__pdataBANK0+1)& (0+127)
+  1078                           
+  1079                           ; Clear objects allocated to COMMON
+  1080     0027  01F8               	clrf	__pbssCOMMON& (0+127)
+  1081     0028  01F9               	clrf	(__pbssCOMMON+1)& (0+127)
+  1082     0029                     end_of_initialization:	
+  1083                           ;End of C runtime variable initialization code
+  1084                           
+  1085     0029                     __end_of__initialization:
+  1086     0029  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+  1087     002A  0020               	movlb	0
+  1088     002B  3180  282D         	ljmp	_main	;jump to C main() function
+  1089                           
+  1090                           	psect	bssCOMMON
+  1091     0078                     __pbssCOMMON:
+  1092     0078                     _timer1ReloadVal:
+  1093     0078                     	ds	2
+  1094                           
+  1095                           	psect	dataBANK0
+  1096     002C                     __pdataBANK0:
+  1097     002C                     _largura_pulso:
+  1098     002C                     	ds	2
+  1099                           
+  1100                           	psect	cstackCOMMON
+  1101     0070                     __pcstackCOMMON:
+  1102     0070                     ?_ECCP_CompareISR:
+  1103     0070                     ?_PIN_MANAGER_Initialize:	
+  1104                           ; 1 bytes @ 0x0
+  1105                           
+  1106     0070                     ?_ECCP_Initialize:	
+  1107                           ; 1 bytes @ 0x0
+  1108                           
+  1109     0070                     ?_INTERRUPT_Initialize:	
+  1110                           ; 1 bytes @ 0x0
+  1111                           
+  1112     0070                     ?_INTERRUPT_InterruptManager:	
+  1113                           ; 1 bytes @ 0x0
+  1114                           
+  1115     0070                     ?_CLOCK_Initialize:	
+  1116                           ; 1 bytes @ 0x0
+  1117                           
+  1118     0070                     ?_TMR1_Initialize:	
+  1119                           ; 1 bytes @ 0x0
+  1120                           
+  1121     0070                     ?_TMR1_Start:	
+  1122                           ; 1 bytes @ 0x0
+  1123                           
+  1124     0070                     ?_SYSTEM_Initialize:	
+  1125                           ; 1 bytes @ 0x0
+  1126                           
+  1127     0070                     ?i1_ECCP_SetCompareCount:	
+  1128                           ; 1 bytes @ 0x0
+  1129                           
+  1130     0070                     ?_main:	
+  1131                           ; 1 bytes @ 0x0
+  1132                           
+  1133     0070                     i1ECCP_SetCompareCount@compareCount:	
+  1134                           ; 2 bytes @ 0x0
+  1135                           
+  1136                           
+  1137                           ; 2 bytes @ 0x0
+  1138     0070                     	ds	2
+  1139     0072                     i1ECCP_SetCompareCount@module:
+  1140     0072                     ??i1_ECCP_SetCompareCount:	
+  1141                           ; 2 bytes @ 0x2
+  1142                           
+  1143                           
+  1144                           ; 1 bytes @ 0x2
+  1145     0072                     	ds	2
+  1146     0074                     ??_ECCP_CompareISR:
+  1147                           
+  1148                           ; 1 bytes @ 0x4
+  1149     0074                     	ds	2
+  1150     0076                     ??_INTERRUPT_InterruptManager:
+  1151                           
+  1152                           	psect	cstackBANK0
+  1153     0020                     __pcstackBANK0:	
+  1154                           ; 1 bytes @ 0x6
+  1155                           
+  1156     0020                     ?_INT_SetInterruptHandler:
+  1157     0020                     ?_ECCP_SetCompareCount:	
+  1158                           ; 1 bytes @ 0x0
+  1159                           
+  1160     0020                     INT_SetInterruptHandler@InterruptHandler:	
+  1161                           ; 1 bytes @ 0x0
+  1162                           
+  1163     0020                     ECCP_SetCompareCount@compareCount:	
+  1164                           ; 2 bytes @ 0x0
+  1165                           
+  1166     0020                     ??_PIN_MANAGER_Initialize:	
+  1167                           ; 2 bytes @ 0x0
+  1168                           
+  1169     0020                     ??_ECCP_Initialize:	
+  1170                           ; 1 bytes @ 0x0
+  1171                           
+  1172     0020                     ??_CLOCK_Initialize:	
+  1173                           ; 1 bytes @ 0x0
+  1174                           
+  1175     0020                     ??_TMR1_Initialize:	
+  1176                           ; 1 bytes @ 0x0
+  1177                           
+  1178     0020                     ??_TMR1_Start:	
+  1179                           ; 1 bytes @ 0x0
+  1180                           
+  1181                           
+  1182                           ; 1 bytes @ 0x0
+  1183     0020                     	ds	2
+  1184     0022                     ECCP_SetCompareCount@module:
+  1185     0022                     ??_INT_SetInterruptHandler:	
+  1186                           ; 2 bytes @ 0x2
+  1187                           
+  1188     0022                     ??_ECCP_SetCompareCount:	
+  1189                           ; 1 bytes @ 0x2
+  1190                           
+  1191     0022                     ??_INTERRUPT_Initialize:	
+  1192                           ; 1 bytes @ 0x2
+  1193                           
+  1194     0022                     ??_SYSTEM_Initialize:	
+  1195                           ; 1 bytes @ 0x2
+  1196                           
+  1197                           
+  1198                           ; 1 bytes @ 0x2
+  1199     0022                     	ds	2
+  1200     0024                     ??_main:
+  1201                           
+  1202                           ; 1 bytes @ 0x4
+  1203     0024                     	ds	1
+  1204     0025                     _main$453:
+  1205                           
+  1206                           ; 2 bytes @ 0x5
+  1207     0025                     	ds	2
+  1208     0027                     main@posicao_servo:
+  1209                           
+  1210                           ; 1 bytes @ 0x7
+  1211     0027                     	ds	1
+  1212                           
+  1213                           	psect	maintext
+  1214     002D                     __pmaintext:	
+  1215 ;;
+  1216 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+  1217 ;;
+  1218 ;; *************** function _main *****************
+  1219 ;; Defined at:
+  1220 ;;		line 43 in file "main.c"
+  1221 ;; Parameters:    Size  Location     Type
+  1222 ;;		None
+  1223 ;; Auto vars:     Size  Location     Type
+  1224 ;;  posicao_serv    1    7[BANK0 ] unsigned char 
+  1225 ;; Return value:  Size  Location     Type
+  1226 ;;                  2  182[None  ] int 
+  1227 ;; Registers used:
+  1228 ;;		wreg, status,2, status,0, pclath, cstack
+  1229 ;; Tracked objects:
+  1230 ;;		On entry : B1F/0
+  1231 ;;		On exit  : 0/0
+  1232 ;;		Unchanged: 0/0
+  1233 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1234 ;;      Params:         0       0       0       0
+  1235 ;;      Locals:         0       3       0       0
+  1236 ;;      Temps:          0       1       0       0
+  1237 ;;      Totals:         0       4       0       0
+  1238 ;;Total ram usage:        4 bytes
+  1239 ;; Hardware stack levels required when called: 6
+  1240 ;; This function calls:
+  1241 ;;		_ECCP_SetCompareCount
+  1242 ;;		_SYSTEM_Initialize
+  1243 ;;		_TMR1_Start
+  1244 ;; This function is called by:
+  1245 ;;		Startup code after reset
+  1246 ;; This function uses a non-reentrant model
+  1247 ;;
+  1248                           
+  1249     002D                     _main:	
+  1250                           ;psect for function _main
+  1251                           
+  1252     002D                     l1132:	
+  1253                           ;incstack = 0
+  1254                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+  1255                           
+  1256                           
+  1257                           ;main.c: 45:     SYSTEM_Initialize();
+  1258     002D  3180  20D6  3180   	fcall	_SYSTEM_Initialize
+  1259                           
+  1260                           ;main.c: 48:     ECCP_SetCompareCount(1000);
+  1261     0030  30E8               	movlw	232
+  1262     0031  0020               	movlb	0	; select bank0
+  1263     0032  00A0               	movwf	ECCP_SetCompareCount@compareCount
+  1264     0033  3003               	movlw	3
+  1265     0034  00A1               	movwf	ECCP_SetCompareCount@compareCount+1
+  1266     0035  3180  20E6  3180   	fcall	_ECCP_SetCompareCount
+  1267     0038                     l1134:
+  1268                           
+  1269                           ;main.c: 49:     CCP1CON = 0x08;
+  1270     0038  3008               	movlw	8
+  1271     0039  0025               	movlb	5	; select bank5
+  1272     003A  0093               	movwf	19	;volatile
+  1273     003B                     l1136:
+  1274                           
+  1275                           ;main.c: 52:     (INTCONbits.PEIE = 1U);
+  1276     003B  170B               	bsf	11,6	;volatile
+  1277     003C                     l1138:
+  1278                           
+  1279                           ;main.c: 53:     (INTCONbits.GIE = 1U);
+  1280     003C  178B               	bsf	11,7	;volatile
+  1281     003D                     l1140:
+  1282                           
+  1283                           ;main.c: 56:     TMR1_Start();
+  1284     003D  3181  2121  3180   	fcall	_TMR1_Start
+  1285     0040                     l1142:
+  1286                           
+  1287                           ;main.c: 58:     uint8_t posicao_servo = 0;
+  1288     0040  0020               	movlb	0	; select bank0
+  1289     0041  01A7               	clrf	main@posicao_servo
+  1290     0042                     l1144:
+  1291                           
+  1292                           ;main.c: 61:     {;main.c: 63:         if (PORTAbits.RA4 == 0)
+  1293     0042  1A0C               	btfsc	12,4	;volatile
+  1294     0043  2845               	goto	u321
+  1295     0044  2846               	goto	u320
+  1296     0045                     u321:
+  1297     0045  2842               	goto	l1144
+  1298     0046                     u320:
+  1299     0046                     l1146:
+  1300                           
+  1301                           ;main.c: 64:         {;main.c: 65:             _delay((unsigned long)((40)*(16000000/400
+      +                          0.0)));
+  1302     0046  30D0               	movlw	208
+  1303     0047  0020               	movlb	0	; select bank0
+  1304     0048  00A4               	movwf	??_main
+  1305     0049  30C9               	movlw	201
+  1306     004A                     u387:
+  1307     004A  0B89               	decfsz	9,f
+  1308     004B  284A               	goto	u387
+  1309     004C  0BA4               	decfsz	??_main,f
+  1310     004D  284A               	goto	u387
+  1311     004E  3200               	nop2
+  1312     004F                     l1148:
+  1313                           
+  1314                           ;main.c: 66:             if (PORTAbits.RA4 == 0)
+  1315     004F  0020               	movlb	0	; select bank0
+  1316     0050  1A0C               	btfsc	12,4	;volatile
+  1317     0051  2853               	goto	u331
+  1318     0052  2854               	goto	u330
+  1319     0053                     u331:
+  1320     0053  2842               	goto	l1144
+  1321     0054                     u330:
+  1322     0054                     l1150:
+  1323                           
+  1324                           ;main.c: 67:             {;main.c: 68:                 posicao_servo = !posicao_servo;
+  1325     0054  0827               	movf	main@posicao_servo,w
+  1326     0055  1903               	btfsc	3,2
+  1327     0056  2858               	goto	u341
+  1328     0057  285A               	goto	u340
+  1329     0058                     u341:
+  1330     0058  3001               	movlw	1
+  1331     0059  285B               	goto	u350
+  1332     005A                     u340:
+  1333     005A  3000               	movlw	0
+  1334     005B                     u350:
+  1335     005B  00A7               	movwf	main@posicao_servo
+  1336     005C                     l1152:
+  1337                           
+  1338                           ;main.c: 71:                 PIE1bits.CCP1IE = 0;
+  1339     005C  0021               	movlb	1	; select bank1
+  1340     005D  1111               	bcf	17,2	;volatile
+  1341                           
+  1342                           ;main.c: 72:                 largura_pulso = (posicao_servo == 1) ? 2250 : 830;
+  1343     005E  0020               	movlb	0	; select bank0
+  1344     005F  0327               	decf	main@posicao_servo,w
+  1345     0060  1903               	btfsc	3,2
+  1346     0061  2863               	goto	u361
+  1347     0062  2864               	goto	u360
+  1348     0063                     u361:
+  1349     0063  2869               	goto	l1156
+  1350     0064                     u360:
+  1351     0064                     l1154:
+  1352     0064  303E               	movlw	62
+  1353     0065  00A5               	movwf	_main$453
+  1354     0066  3003               	movlw	3
+  1355     0067  00A6               	movwf	_main$453+1
+  1356     0068  286D               	goto	l189
+  1357     0069                     l1156:
+  1358     0069  30CA               	movlw	202
+  1359     006A  00A5               	movwf	_main$453
+  1360     006B  3008               	movlw	8
+  1361     006C  00A6               	movwf	_main$453+1
+  1362     006D                     l189:
+  1363     006D  0826               	movf	_main$453+1,w
+  1364     006E  00AD               	movwf	_largura_pulso+1	;volatile
+  1365     006F  0825               	movf	_main$453,w
+  1366     0070  00AC               	movwf	_largura_pulso	;volatile
+  1367     0071                     l1158:
+  1368                           
+  1369                           ;main.c: 73:                 PIE1bits.CCP1IE = 1;
+  1370     0071  0021               	movlb	1	; select bank1
+  1371     0072  1511               	bsf	17,2	;volatile
+  1372     0073                     l190:	
+  1373                           ;main.c: 76:                 while (PORTAbits.RA4 == 0);
+  1374                           
+  1375     0073  0020               	movlb	0	; select bank0
+  1376     0074  1E0C               	btfss	12,4	;volatile
+  1377     0075  2877               	goto	u371
+  1378     0076  2878               	goto	u370
+  1379     0077                     u371:
+  1380     0077  2873               	goto	l190
+  1381     0078                     u370:
+  1382     0078  2842               	goto	l1144
+  1383     0079  3180  281D         	ljmp	start
+  1384     007B                     __end_of_main:
+  1385                           
+  1386                           	psect	text1
+  1387     0121                     __ptext1:	
+  1388 ;; *************** function _TMR1_Start *****************
+  1389 ;; Defined at:
+  1390 ;;		line 97 in file "mcc_generated_files/timer/src/tmr1.c"
+  1391 ;; Parameters:    Size  Location     Type
+  1392 ;;		None
+  1393 ;; Auto vars:     Size  Location     Type
+  1394 ;;		None
+  1395 ;; Return value:  Size  Location     Type
+  1396 ;;                  1    wreg      void 
+  1397 ;; Registers used:
+  1398 ;;		None
+  1399 ;; Tracked objects:
+  1400 ;;		On entry : 0/0
+  1401 ;;		On exit  : 0/0
+  1402 ;;		Unchanged: 0/0
+  1403 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1404 ;;      Params:         0       0       0       0
+  1405 ;;      Locals:         0       0       0       0
+  1406 ;;      Temps:          0       0       0       0
+  1407 ;;      Totals:         0       0       0       0
+  1408 ;;Total ram usage:        0 bytes
+  1409 ;; Hardware stack levels used: 1
+  1410 ;; Hardware stack levels required when called: 3
+  1411 ;; This function calls:
+  1412 ;;		Nothing
+  1413 ;; This function is called by:
+  1414 ;;		_main
+  1415 ;; This function uses a non-reentrant model
+  1416 ;;
+  1417                           
+  1418     0121                     _TMR1_Start:	
+  1419                           ;psect for function _TMR1_Start
+  1420                           
+  1421     0121                     l1034:	
+  1422                           ;incstack = 0
+  1423                           ; Regs used in _TMR1_Start: []
+  1424                           
+  1425                           
+  1426                           ;mcc_generated_files/timer/src/tmr1.c: 99:     T1CONbits.TMR1ON = 1U;
+  1427     0121  0020               	movlb	0	; select bank0
+  1428     0122  1418               	bsf	24,0	;volatile
+  1429     0123                     l87:
+  1430     0123  0008               	return
+  1431     0124                     __end_of_TMR1_Start:
+  1432                           
+  1433                           	psect	text2
+  1434     00D6                     __ptext2:	
+  1435 ;; *************** function _SYSTEM_Initialize *****************
+  1436 ;; Defined at:
+  1437 ;;		line 39 in file "mcc_generated_files/system/src/system.c"
+  1438 ;; Parameters:    Size  Location     Type
+  1439 ;;		None
+  1440 ;; Auto vars:     Size  Location     Type
+  1441 ;;		None
+  1442 ;; Return value:  Size  Location     Type
+  1443 ;;                  1    wreg      void 
+  1444 ;; Registers used:
+  1445 ;;		wreg, status,2, status,0, pclath, cstack
+  1446 ;; Tracked objects:
+  1447 ;;		On entry : 0/0
+  1448 ;;		On exit  : 0/0
+  1449 ;;		Unchanged: 0/0
+  1450 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1451 ;;      Params:         0       0       0       0
+  1452 ;;      Locals:         0       0       0       0
+  1453 ;;      Temps:          0       0       0       0
+  1454 ;;      Totals:         0       0       0       0
+  1455 ;;Total ram usage:        0 bytes
+  1456 ;; Hardware stack levels used: 1
+  1457 ;; Hardware stack levels required when called: 5
+  1458 ;; This function calls:
+  1459 ;;		_CLOCK_Initialize
+  1460 ;;		_ECCP_Initialize
+  1461 ;;		_INTERRUPT_Initialize
+  1462 ;;		_PIN_MANAGER_Initialize
+  1463 ;;		_TMR1_Initialize
+  1464 ;; This function is called by:
+  1465 ;;		_main
+  1466 ;; This function uses a non-reentrant model
+  1467 ;;
+  1468                           
+  1469     00D6                     _SYSTEM_Initialize:	
+  1470                           ;psect for function _SYSTEM_Initialize
+  1471                           
+  1472     00D6                     l1124:	
+  1473                           ;incstack = 0
+  1474                           ; Regs used in _SYSTEM_Initialize: [wreg+status,2+status,0+pclath+cstack]
+  1475                           
+  1476                           
+  1477                           ;mcc_generated_files/system/src/system.c: 41:     CLOCK_Initialize();
+  1478     00D6  3181  2113  3180   	fcall	_CLOCK_Initialize
+  1479                           
+  1480                           ;mcc_generated_files/system/src/system.c: 42:     PIN_MANAGER_Initialize();
+  1481     00D9  3180  20C2  3180   	fcall	_PIN_MANAGER_Initialize
+  1482     00DC                     l1126:
+  1483                           
+  1484                           ;mcc_generated_files/system/src/system.c: 43:     TMR1_Initialize();
+  1485     00DC  3180  20AC  3180   	fcall	_TMR1_Initialize
+  1486     00DF                     l1128:
+  1487                           
+  1488                           ;mcc_generated_files/system/src/system.c: 44:     ECCP_Initialize();
+  1489     00DF  3180  20FF  3180   	fcall	_ECCP_Initialize
+  1490                           
+  1491                           ;mcc_generated_files/system/src/system.c: 45:     INTERRUPT_Initialize();
+  1492     00E2  3180  20F3  3180   	fcall	_INTERRUPT_Initialize
+  1493     00E5                     l160:
+  1494     00E5  0008               	return
+  1495     00E6                     __end_of_SYSTEM_Initialize:
+  1496                           
+  1497                           	psect	text3
+  1498     00AC                     __ptext3:	
+  1499 ;; *************** function _TMR1_Initialize *****************
+  1500 ;; Defined at:
+  1501 ;;		line 53 in file "mcc_generated_files/timer/src/tmr1.c"
+  1502 ;; Parameters:    Size  Location     Type
+  1503 ;;		None
+  1504 ;; Auto vars:     Size  Location     Type
+  1505 ;;		None
+  1506 ;; Return value:  Size  Location     Type
+  1507 ;;                  1    wreg      void 
+  1508 ;; Registers used:
+  1509 ;;		wreg, status,2
+  1510 ;; Tracked objects:
+  1511 ;;		On entry : 0/0
+  1512 ;;		On exit  : 0/0
+  1513 ;;		Unchanged: 0/0
+  1514 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1515 ;;      Params:         0       0       0       0
+  1516 ;;      Locals:         0       0       0       0
+  1517 ;;      Temps:          0       0       0       0
+  1518 ;;      Totals:         0       0       0       0
+  1519 ;;Total ram usage:        0 bytes
+  1520 ;; Hardware stack levels used: 1
+  1521 ;; Hardware stack levels required when called: 3
+  1522 ;; This function calls:
+  1523 ;;		Nothing
+  1524 ;; This function is called by:
+  1525 ;;		_SYSTEM_Initialize
+  1526 ;; This function uses a non-reentrant model
+  1527 ;;
+  1528                           
+  1529     00AC                     _TMR1_Initialize:	
+  1530                           ;psect for function _TMR1_Initialize
+  1531                           
+  1532     00AC                     l988:	
+  1533                           ;incstack = 0
+  1534                           ; Regs used in _TMR1_Initialize: [wreg+status,2]
+  1535                           
+  1536                           
+  1537                           ;mcc_generated_files/timer/src/tmr1.c: 55:     T1CONbits.TMR1ON = 0U;
+  1538     00AC  0020               	movlb	0	; select bank0
+  1539     00AD  1018               	bcf	24,0	;volatile
+  1540     00AE                     l990:
+  1541                           
+  1542                           ;mcc_generated_files/timer/src/tmr1.c: 57:     TMR1H = 0x0;
+  1543     00AE  0197               	clrf	23	;volatile
+  1544                           
+  1545                           ;mcc_generated_files/timer/src/tmr1.c: 58:     TMR1L = 0x0;
+  1546     00AF  0196               	clrf	22	;volatile
+  1547     00B0                     l992:
+  1548                           
+  1549                           ;mcc_generated_files/timer/src/tmr1.c: 60:     timer1ReloadVal=((uint16_t)TMR1H << 8U) |
+      +                           TMR1L;
+  1550     00B0  0817               	movf	23,w	;volatile
+  1551     00B1  00F9               	movwf	_timer1ReloadVal+1	;volatile
+  1552     00B2  0816               	movf	22,w	;volatile
+  1553     00B3  00F8               	movwf	_timer1ReloadVal	;volatile
+  1554     00B4                     l994:
+  1555                           
+  1556                           ;mcc_generated_files/timer/src/tmr1.c: 62:     T1GCON = (0 << 0x0)
+  1557     00B4  0199               	clrf	25	;volatile
+  1558                           
+  1559                           ;mcc_generated_files/timer/src/tmr1.c: 68:     TMR1_OverflowCallback =TMR1_DefaultOverfl
+      +                          owCallback;
+  1560     00B5  3000               	movlw	0
+  1561     00B6  00AA               	movwf	_TMR1_OverflowCallback
+  1562     00B7  3000               	movlw	0
+  1563     00B8  00AB               	movwf	_TMR1_OverflowCallback+1
+  1564                           
+  1565                           ;mcc_generated_files/timer/src/tmr1.c: 69:     TMR1_GateCallback = TMR1_DefaultGateCallb
+      +                          ack;
+  1566     00B9  3000               	movlw	0
+  1567     00BA  00A8               	movwf	_TMR1_GateCallback
+  1568     00BB  3000               	movlw	0
+  1569     00BC  00A9               	movwf	_TMR1_GateCallback+1
+  1570     00BD                     l996:
+  1571                           
+  1572                           ;mcc_generated_files/timer/src/tmr1.c: 72:  PIR1bits.TMR1IF = 0U;
+  1573     00BD  1011               	bcf	17,0	;volatile
+  1574     00BE                     l998:
+  1575                           
+  1576                           ;mcc_generated_files/timer/src/tmr1.c: 73:  PIR1bits.TMR1GIF = 0U;
+  1577     00BE  1391               	bcf	17,7	;volatile
+  1578     00BF                     l1000:
+  1579                           
+  1580                           ;mcc_generated_files/timer/src/tmr1.c: 75:     T1CON = (1 << 0x0)
+  1581     00BF  3025               	movlw	37
+  1582     00C0  0098               	movwf	24	;volatile
+  1583     00C1                     l81:
+  1584     00C1  0008               	return
+  1585     00C2                     __end_of_TMR1_Initialize:
+  1586                           
+  1587                           	psect	text4
+  1588     00C2                     __ptext4:	
+  1589 ;; *************** function _PIN_MANAGER_Initialize *****************
+  1590 ;; Defined at:
+  1591 ;;		line 38 in file "mcc_generated_files/system/src/pins.c"
+  1592 ;; Parameters:    Size  Location     Type
+  1593 ;;		None
+  1594 ;; Auto vars:     Size  Location     Type
+  1595 ;;		None
+  1596 ;; Return value:  Size  Location     Type
+  1597 ;;                  1    wreg      void 
+  1598 ;; Registers used:
+  1599 ;;		status,2
+  1600 ;; Tracked objects:
+  1601 ;;		On entry : 0/0
+  1602 ;;		On exit  : 0/0
+  1603 ;;		Unchanged: 0/0
+  1604 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1605 ;;      Params:         0       0       0       0
+  1606 ;;      Locals:         0       0       0       0
+  1607 ;;      Temps:          0       0       0       0
+  1608 ;;      Totals:         0       0       0       0
+  1609 ;;Total ram usage:        0 bytes
+  1610 ;; Hardware stack levels used: 1
+  1611 ;; Hardware stack levels required when called: 3
+  1612 ;; This function calls:
+  1613 ;;		Nothing
+  1614 ;; This function is called by:
+  1615 ;;		_SYSTEM_Initialize
+  1616 ;; This function uses a non-reentrant model
+  1617 ;;
+  1618                           
+  1619     00C2                     _PIN_MANAGER_Initialize:	
+  1620                           ;psect for function _PIN_MANAGER_Initialize
+  1621                           
+  1622     00C2                     l1002:	
+  1623                           ;incstack = 0
+  1624                           ; Regs used in _PIN_MANAGER_Initialize: [status,2]
+  1625                           
+  1626                           
+  1627                           ;mcc_generated_files/system/src/pins.c: 43:     LATA = 0x0;
+  1628     00C2  0022               	movlb	2	; select bank2
+  1629     00C3  018C               	clrf	12	;volatile
+  1630     00C4                     l1004:
+  1631                           
+  1632                           ;mcc_generated_files/system/src/pins.c: 48:     TRISA = 0x3B;
+  1633     00C4  303B               	movlw	59
+  1634     00C5  0021               	movlb	1	; select bank1
+  1635     00C6  008C               	movwf	12	;volatile
+  1636     00C7                     l1006:
+  1637                           
+  1638                           ;mcc_generated_files/system/src/pins.c: 53:     ANSELA = 0x3;
+  1639     00C7  3003               	movlw	3
+  1640     00C8  0023               	movlb	3	; select bank3
+  1641     00C9  008C               	movwf	12	;volatile
+  1642     00CA                     l1008:
+  1643                           
+  1644                           ;mcc_generated_files/system/src/pins.c: 58:     WPUA = 0x3B;
+  1645     00CA  303B               	movlw	59
+  1646     00CB  0024               	movlb	4	; select bank4
+  1647     00CC  008C               	movwf	12	;volatile
+  1648     00CD                     l1010:
+  1649                           
+  1650                           ;mcc_generated_files/system/src/pins.c: 59:     OPTION_REGbits.nWPUEN = 0x0;
+  1651     00CD  0021               	movlb	1	; select bank1
+  1652     00CE  1395               	bcf	21,7	;volatile
+  1653                           
+  1654                           ;mcc_generated_files/system/src/pins.c: 79:     APFCON = 0x0;
+  1655     00CF  0022               	movlb	2	; select bank2
+  1656     00D0  019D               	clrf	29	;volatile
+  1657                           
+  1658                           ;mcc_generated_files/system/src/pins.c: 84:     IOCAP = 0x0;
+  1659     00D1  0027               	movlb	7	; select bank7
+  1660     00D2  0191               	clrf	17	;volatile
+  1661                           
+  1662                           ;mcc_generated_files/system/src/pins.c: 85:     IOCAN = 0x0;
+  1663     00D3  0192               	clrf	18	;volatile
+  1664                           
+  1665                           ;mcc_generated_files/system/src/pins.c: 86:     IOCAF = 0x0;
+  1666     00D4  0193               	clrf	19	;volatile
+  1667     00D5                     l216:
+  1668     00D5  0008               	return
+  1669     00D6                     __end_of_PIN_MANAGER_Initialize:
+  1670                           
+  1671                           	psect	text5
+  1672     00F3                     __ptext5:	
+  1673 ;; *************** function _INTERRUPT_Initialize *****************
+  1674 ;; Defined at:
+  1675 ;;		line 40 in file "mcc_generated_files/system/src/interrupt.c"
+  1676 ;; Parameters:    Size  Location     Type
+  1677 ;;		None
+  1678 ;; Auto vars:     Size  Location     Type
+  1679 ;;		None
+  1680 ;; Return value:  Size  Location     Type
+  1681 ;;                  1    wreg      void 
+  1682 ;; Registers used:
+  1683 ;;		wreg, status,2, status,0, pclath, cstack
+  1684 ;; Tracked objects:
+  1685 ;;		On entry : 0/0
+  1686 ;;		On exit  : 0/0
+  1687 ;;		Unchanged: 0/0
+  1688 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1689 ;;      Params:         0       0       0       0
+  1690 ;;      Locals:         0       0       0       0
+  1691 ;;      Temps:          0       0       0       0
+  1692 ;;      Totals:         0       0       0       0
+  1693 ;;Total ram usage:        0 bytes
+  1694 ;; Hardware stack levels used: 1
+  1695 ;; Hardware stack levels required when called: 4
+  1696 ;; This function calls:
+  1697 ;;		_INT_SetInterruptHandler
+  1698 ;; This function is called by:
+  1699 ;;		_SYSTEM_Initialize
+  1700 ;; This function uses a non-reentrant model
+  1701 ;;
+  1702                           
+  1703     00F3                     _INTERRUPT_Initialize:	
+  1704                           ;psect for function _INTERRUPT_Initialize
+  1705                           
+  1706     00F3                     l1120:	
+  1707                           ;incstack = 0
+  1708                           ; Regs used in _INTERRUPT_Initialize: [wreg+status,2+status,0+pclath+cstack]
+  1709                           
+  1710                           
+  1711                           ;mcc_generated_files/system/src/interrupt.c: 44:     (INTCONbits.INTF = 0U);
+  1712     00F3  108B               	bcf	11,1	;volatile
+  1713                           
+  1714                           ;mcc_generated_files/system/src/interrupt.c: 45:     (OPTION_REGbits.INTEDG = 1U);
+  1715     00F4  0021               	movlb	1	; select bank1
+  1716     00F5  1715               	bsf	21,6	;volatile
+  1717     00F6                     l1122:
+  1718                           
+  1719                           ;mcc_generated_files/system/src/interrupt.c: 47:     INT_SetInterruptHandler(INT_Default
+      +                          InterruptHandler);
+  1720     00F6  3000               	movlw	0
+  1721     00F7  0020               	movlb	0	; select bank0
+  1722     00F8  00A0               	movwf	INT_SetInterruptHandler@InterruptHandler
+  1723     00F9  3000               	movlw	0
+  1724     00FA  00A1               	movwf	INT_SetInterruptHandler@InterruptHandler+1
+  1725     00FB  3181  211B  3180   	fcall	_INT_SetInterruptHandler
+  1726     00FE                     l21:
+  1727     00FE  0008               	return
+  1728     00FF                     __end_of_INTERRUPT_Initialize:
+  1729                           
+  1730                           	psect	text6
+  1731     011B                     __ptext6:	
+  1732 ;; *************** function _INT_SetInterruptHandler *****************
+  1733 ;; Defined at:
+  1734 ;;		line 97 in file "mcc_generated_files/system/src/interrupt.c"
+  1735 ;; Parameters:    Size  Location     Type
+  1736 ;;  InterruptHan    2    0[BANK0 ] PTR FTN()void 
+  1737 ;;		 -> INT_DefaultInterruptHandler(1), 
+  1738 ;; Auto vars:     Size  Location     Type
+  1739 ;;		None
+  1740 ;; Return value:  Size  Location     Type
+  1741 ;;                  1    wreg      void 
+  1742 ;; Registers used:
+  1743 ;;		wreg
+  1744 ;; Tracked objects:
+  1745 ;;		On entry : 0/0
+  1746 ;;		On exit  : 0/0
+  1747 ;;		Unchanged: 0/0
+  1748 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1749 ;;      Params:         0       2       0       0
+  1750 ;;      Locals:         0       0       0       0
+  1751 ;;      Temps:          0       0       0       0
+  1752 ;;      Totals:         0       2       0       0
+  1753 ;;Total ram usage:        2 bytes
+  1754 ;; Hardware stack levels used: 1
+  1755 ;; Hardware stack levels required when called: 3
+  1756 ;; This function calls:
+  1757 ;;		Nothing
+  1758 ;; This function is called by:
+  1759 ;;		_INTERRUPT_Initialize
+  1760 ;; This function uses a non-reentrant model
+  1761 ;;
+  1762                           
+  1763     011B                     _INT_SetInterruptHandler:	
+  1764                           ;psect for function _INT_SetInterruptHandler
+  1765                           
+  1766     011B                     l1118:	
+  1767                           ;incstack = 0
+  1768                           ; Regs used in _INT_SetInterruptHandler: [wreg]
+  1769                           
+  1770                           
+  1771                           ;mcc_generated_files/system/src/interrupt.c: 98:     INT_InterruptHandler = InterruptHan
+      +                          dler;
+  1772     011B  0020               	movlb	0	; select bank0
+  1773     011C  0821               	movf	INT_SetInterruptHandler@InterruptHandler+1,w
+  1774     011D  00F7               	movwf	_INT_InterruptHandler+1
+  1775     011E  0820               	movf	INT_SetInterruptHandler@InterruptHandler,w
+  1776     011F  00F6               	movwf	_INT_InterruptHandler
+  1777     0120                     l40:
+  1778     0120  0008               	return
+  1779     0121                     __end_of_INT_SetInterruptHandler:
+  1780                           
+  1781                           	psect	text7
+  1782     00FF                     __ptext7:	
+  1783 ;; *************** function _ECCP_Initialize *****************
+  1784 ;; Defined at:
+  1785 ;;		line 42 in file "mcc_generated_files/compare/src/eccp.c"
+  1786 ;; Parameters:    Size  Location     Type
+  1787 ;;		None
+  1788 ;; Auto vars:     Size  Location     Type
+  1789 ;;		None
+  1790 ;; Return value:  Size  Location     Type
+  1791 ;;                  1    wreg      void 
+  1792 ;; Registers used:
+  1793 ;;		status,2
+  1794 ;; Tracked objects:
+  1795 ;;		On entry : 0/0
+  1796 ;;		On exit  : 0/0
+  1797 ;;		Unchanged: 0/0
+  1798 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1799 ;;      Params:         0       0       0       0
+  1800 ;;      Locals:         0       0       0       0
+  1801 ;;      Temps:          0       0       0       0
+  1802 ;;      Totals:         0       0       0       0
+  1803 ;;Total ram usage:        0 bytes
+  1804 ;; Hardware stack levels used: 1
+  1805 ;; Hardware stack levels required when called: 3
+  1806 ;; This function calls:
+  1807 ;;		Nothing
+  1808 ;; This function is called by:
+  1809 ;;		_SYSTEM_Initialize
+  1810 ;; This function uses a non-reentrant model
+  1811 ;;
+  1812                           
+  1813     00FF                     _ECCP_Initialize:	
+  1814                           ;psect for function _ECCP_Initialize
+  1815                           
+  1816     00FF                     l1012:	
+  1817                           ;incstack = 0
+  1818                           ; Regs used in _ECCP_Initialize: [status,2]
+  1819                           
+  1820                           
+  1821                           ;mcc_generated_files/compare/src/eccp.c: 47:     CCP1CON = 0x8;
+  1822     00FF  3008               	movlw	8
+  1823     0100  0025               	movlb	5	; select bank5
+  1824     0101  0093               	movwf	19	;volatile
+  1825     0102                     l1014:
+  1826                           
+  1827                           ;mcc_generated_files/compare/src/eccp.c: 50:     CCPR1H = 0x0;
+  1828     0102  0192               	clrf	18	;volatile
+  1829                           
+  1830                           ;mcc_generated_files/compare/src/eccp.c: 53:     CCPR1L = 0x0;
+  1831     0103  0191               	clrf	17	;volatile
+  1832     0104                     l1016:
+  1833                           
+  1834                           ;mcc_generated_files/compare/src/eccp.c: 56:     PIR1bits.CCP1IF = 0;
+  1835     0104  0020               	movlb	0	; select bank0
+  1836     0105  1111               	bcf	17,2	;volatile
+  1837     0106                     l1018:
+  1838                           
+  1839                           ;mcc_generated_files/compare/src/eccp.c: 59:     PIE1bits.CCP1IE = 1;
+  1840     0106  0021               	movlb	1	; select bank1
+  1841     0107  1511               	bsf	17,2	;volatile
+  1842     0108                     l236:
+  1843     0108  0008               	return
+  1844     0109                     __end_of_ECCP_Initialize:
+  1845                           
+  1846                           	psect	text8
+  1847     0113                     __ptext8:	
+  1848 ;; *************** function _CLOCK_Initialize *****************
+  1849 ;; Defined at:
+  1850 ;;		line 39 in file "mcc_generated_files/system/src/clock.c"
+  1851 ;; Parameters:    Size  Location     Type
+  1852 ;;		None
+  1853 ;; Auto vars:     Size  Location     Type
+  1854 ;;		None
+  1855 ;; Return value:  Size  Location     Type
+  1856 ;;                  1    wreg      void 
+  1857 ;; Registers used:
+  1858 ;;		status,2
+  1859 ;; Tracked objects:
+  1860 ;;		On entry : 0/0
+  1861 ;;		On exit  : 0/0
+  1862 ;;		Unchanged: 0/0
+  1863 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1864 ;;      Params:         0       0       0       0
+  1865 ;;      Locals:         0       0       0       0
+  1866 ;;      Temps:          0       0       0       0
+  1867 ;;      Totals:         0       0       0       0
+  1868 ;;Total ram usage:        0 bytes
+  1869 ;; Hardware stack levels used: 1
+  1870 ;; Hardware stack levels required when called: 3
+  1871 ;; This function calls:
+  1872 ;;		Nothing
+  1873 ;; This function is called by:
+  1874 ;;		_SYSTEM_Initialize
+  1875 ;; This function uses a non-reentrant model
+  1876 ;;
+  1877                           
+  1878     0113                     _CLOCK_Initialize:	
+  1879                           ;psect for function _CLOCK_Initialize
+  1880                           
+  1881     0113                     l984:	
+  1882                           ;incstack = 0
+  1883                           ; Regs used in _CLOCK_Initialize: [status,2]
+  1884                           
+  1885                           
+  1886                           ;mcc_generated_files/system/src/clock.c: 41:     OSCCON = (15 << 0x3)
+  1887     0113  307A               	movlw	122
+  1888     0114  0021               	movlb	1	; select bank1
+  1889     0115  0099               	movwf	25	;volatile
+  1890     0116                     l986:
+  1891                           
+  1892                           ;mcc_generated_files/system/src/clock.c: 44:     BORCON = (0 << 0x7)
+  1893     0116  0022               	movlb	2	; select bank2
+  1894     0117  0196               	clrf	22	;volatile
+  1895                           
+  1896                           ;mcc_generated_files/system/src/clock.c: 46:     OSCTUNE = (0 << 0x0);
+  1897     0118  0021               	movlb	1	; select bank1
+  1898     0119  0198               	clrf	24	;volatile
+  1899     011A                     l52:
+  1900     011A  0008               	return
+  1901     011B                     __end_of_CLOCK_Initialize:
+  1902                           
+  1903                           	psect	text9
+  1904     00E6                     __ptext9:	
+  1905 ;; *************** function _ECCP_SetCompareCount *****************
+  1906 ;; Defined at:
+  1907 ;;		line 62 in file "mcc_generated_files/compare/src/eccp.c"
+  1908 ;; Parameters:    Size  Location     Type
+  1909 ;;  compareCount    2    0[BANK0 ] unsigned short 
+  1910 ;; Auto vars:     Size  Location     Type
+  1911 ;;  module          2    2[BANK0 ] struct CCPR1Reg_tag
+  1912 ;; Return value:  Size  Location     Type
+  1913 ;;                  1    wreg      void 
+  1914 ;; Registers used:
+  1915 ;;		wreg
+  1916 ;; Tracked objects:
+  1917 ;;		On entry : 0/0
+  1918 ;;		On exit  : 0/0
+  1919 ;;		Unchanged: 0/0
+  1920 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1921 ;;      Params:         0       2       0       0
+  1922 ;;      Locals:         0       2       0       0
+  1923 ;;      Temps:          0       0       0       0
+  1924 ;;      Totals:         0       4       0       0
+  1925 ;;Total ram usage:        4 bytes
+  1926 ;; Hardware stack levels used: 1
+  1927 ;; Hardware stack levels required when called: 3
+  1928 ;; This function calls:
+  1929 ;;		Nothing
+  1930 ;; This function is called by:
+  1931 ;;		_main
+  1932 ;; This function uses a non-reentrant model
+  1933 ;;
+  1934                           
+  1935     00E6                     _ECCP_SetCompareCount:	
+  1936                           ;psect for function _ECCP_SetCompareCount
+  1937                           
+  1938     00E6                     l1130:	
+  1939                           ;incstack = 0
+  1940                           ; Regs used in _ECCP_SetCompareCount: [wreg]
+  1941                           
+  1942                           
+  1943                           ;mcc_generated_files/compare/src/eccp.c: 62: void ECCP_SetCompareCount(uint16_t compareC
+      +                          ount);mcc_generated_files/compare/src/eccp.c: 63: {;mcc_generated_files/compare/src/eccp
+      +                          .c: 64:     CCPR1_PERIOD_REG_T module;;mcc_generated_files/compare/src/eccp.c: 67:     m
+      +                          odule.ccpr1_16Bit = compareCount;
+  1944     00E6  0020               	movlb	0	; select bank0
+  1945     00E7  0821               	movf	ECCP_SetCompareCount@compareCount+1,w
+  1946     00E8  00A3               	movwf	ECCP_SetCompareCount@module+1
+  1947     00E9  0820               	movf	ECCP_SetCompareCount@compareCount,w
+  1948     00EA  00A2               	movwf	ECCP_SetCompareCount@module
+  1949                           
+  1950                           ;mcc_generated_files/compare/src/eccp.c: 69:     CCPR1L = module.ccpr1l;
+  1951     00EB  0822               	movf	ECCP_SetCompareCount@module,w
+  1952     00EC  0025               	movlb	5	; select bank5
+  1953     00ED  0091               	movwf	17	;volatile
+  1954                           
+  1955                           ;mcc_generated_files/compare/src/eccp.c: 70:     CCPR1H = module.ccpr1h;
+  1956     00EE  0020               	movlb	0	; select bank0
+  1957     00EF  0823               	movf	ECCP_SetCompareCount@module+1,w
+  1958     00F0  0025               	movlb	5	; select bank5
+  1959     00F1  0092               	movwf	18	;volatile
+  1960     00F2                     l239:
+  1961     00F2  0008               	return
+  1962     00F3                     __end_of_ECCP_SetCompareCount:
+  1963                           
+  1964                           	psect	intentry
+  1965     0004                     __pintentry:	
+  1966 ;; *************** function _INTERRUPT_InterruptManager *****************
+  1967 ;; Defined at:
+  1968 ;;		line 59 in file "mcc_generated_files/system/src/interrupt.c"
+  1969 ;; Parameters:    Size  Location     Type
+  1970 ;;		None
+  1971 ;; Auto vars:     Size  Location     Type
+  1972 ;;		None
+  1973 ;; Return value:  Size  Location     Type
+  1974 ;;                  1    wreg      void 
+  1975 ;; Registers used:
+  1976 ;;		wreg, status,2, status,0, pclath, cstack
+  1977 ;; Tracked objects:
+  1978 ;;		On entry : 0/0
+  1979 ;;		On exit  : 0/0
+  1980 ;;		Unchanged: 0/0
+  1981 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1982 ;;      Params:         0       0       0       0
+  1983 ;;      Locals:         0       0       0       0
+  1984 ;;      Temps:          0       0       0       0
+  1985 ;;      Totals:         0       0       0       0
+  1986 ;;Total ram usage:        0 bytes
+  1987 ;; Hardware stack levels used: 1
+  1988 ;; Hardware stack levels required when called: 2
+  1989 ;; This function calls:
+  1990 ;;		_ECCP_CompareISR
+  1991 ;; This function is called by:
+  1992 ;;		Interrupt level 1
+  1993 ;; This function uses a non-reentrant model
+  1994 ;;
+  1995                           
+  1996     0004                     _INTERRUPT_InterruptManager:
+  1997                           
+  1998                           ;incstack = 0
+  1999     0004  147E               	bsf	int$flags,0	;set compiler interrupt flag (level 1)
+  2000                           
+  2001                           ; Regs used in _INTERRUPT_InterruptManager: [wreg+status,2+status,0+pclath+cstack]
+  2002     0005  3180               	pagesel	$
+  2003     0006  3000               	movlw	low ___int_sp
+  2004     0007  0086               	movwf	6
+  2005     0008  3000               	movlw	high ___int_sp
+  2006     0009  0087               	movwf	7
+  2007     000A                     i1l1044:
+  2008                           
+  2009                           ;mcc_generated_files/system/src/interrupt.c: 62:     if(INTCONbits.PEIE == 1U)
+  2010     000A  1F0B               	btfss	11,6	;volatile
+  2011     000B  280D               	goto	u18_21
+  2012     000C  280E               	goto	u18_20
+  2013     000D                     u18_21:
+  2014     000D  281B               	goto	i1l30
+  2015     000E                     u18_20:
+  2016     000E                     i1l1046:
+  2017                           
+  2018                           ;mcc_generated_files/system/src/interrupt.c: 63:     {;mcc_generated_files/system/src/in
+      +                          terrupt.c: 64:         if(PIE1bits.CCP1IE == 1U && PIR1bits.CCP1IF == 1U)
+  2019     000E  0021               	movlb	1	; select bank1
+  2020     000F  1D11               	btfss	17,2	;volatile
+  2021     0010  2812               	goto	u19_21
+  2022     0011  2813               	goto	u19_20
+  2023     0012                     u19_21:
+  2024     0012  281B               	goto	i1l30
+  2025     0013                     u19_20:
+  2026     0013                     i1l1048:
+  2027     0013  0020               	movlb	0	; select bank0
+  2028     0014  1D11               	btfss	17,2	;volatile
+  2029     0015  2817               	goto	u20_21
+  2030     0016  2818               	goto	u20_20
+  2031     0017                     u20_21:
+  2032     0017  281B               	goto	i1l30
+  2033     0018                     u20_20:
+  2034     0018                     i1l1050:
+  2035                           
+  2036                           ;mcc_generated_files/system/src/interrupt.c: 65:         {;mcc_generated_files/system/sr
+      +                          c/interrupt.c: 66:             ECCP_CompareISR();
+  2037     0018  3180  207B  3180   	fcall	_ECCP_CompareISR
+  2038     001B                     i1l30:	
+  2039                           ;mcc_generated_files/system/src/interrupt.c: 67:         }
+  2040                           
+  2041     001B  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+  2042     001C  0009               	retfie
+  2043     001D                     __end_of_INTERRUPT_InterruptManager:
+  2044                           
+  2045                           	psect	text11
+  2046     007B                     __ptext11:	
+  2047 ;; *************** function _ECCP_CompareISR *****************
+  2048 ;; Defined at:
+  2049 ;;		line 73 in file "mcc_generated_files/compare/src/eccp.c"
+  2050 ;; Parameters:    Size  Location     Type
+  2051 ;;		None
+  2052 ;; Auto vars:     Size  Location     Type
+  2053 ;;		None
+  2054 ;; Return value:  Size  Location     Type
+  2055 ;;                  1    wreg      void 
+  2056 ;; Registers used:
+  2057 ;;		wreg, status,2, status,0, pclath, cstack
+  2058 ;; Tracked objects:
+  2059 ;;		On entry : 0/0
+  2060 ;;		On exit  : 0/0
+  2061 ;;		Unchanged: 0/0
+  2062 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  2063 ;;      Params:         0       0       0       0
+  2064 ;;      Locals:         0       0       0       0
+  2065 ;;      Temps:          2       0       0       0
+  2066 ;;      Totals:         2       0       0       0
+  2067 ;;Total ram usage:        2 bytes
+  2068 ;; Hardware stack levels used: 1
+  2069 ;; Hardware stack levels required when called: 1
+  2070 ;; This function calls:
+  2071 ;;		i1_ECCP_SetCompareCount
+  2072 ;; This function is called by:
+  2073 ;;		_INTERRUPT_InterruptManager
+  2074 ;; This function uses a non-reentrant model
+  2075 ;;
+  2076                           
+  2077     007B                     _ECCP_CompareISR:	
+  2078                           ;psect for function _ECCP_CompareISR
+  2079                           
+  2080     007B                     i1l1022:	
+  2081                           ;incstack = 0
+  2082                           ; Regs used in _ECCP_CompareISR: [wreg+status,2+status,0+pclath+cstack]
+  2083                           
+  2084                           
+  2085                           ;mcc_generated_files/compare/src/eccp.c: 76:     PIR1bits.CCP1IF = 0;
+  2086     007B  0020               	movlb	0	; select bank0
+  2087     007C  1111               	bcf	17,2	;volatile
+  2088     007D                     i1l1024:
+  2089                           
+  2090                           ;mcc_generated_files/compare/src/eccp.c: 79:     if (CCP1CON == 0x08) {
+  2091     007D  3008               	movlw	8
+  2092     007E  0025               	movlb	5	; select bank5
+  2093     007F  0613               	xorwf	19,w	;volatile
+  2094     0080  1D03               	btfss	3,2
+  2095     0081  2883               	goto	u17_21
+  2096     0082  2884               	goto	u17_20
+  2097     0083                     u17_21:
+  2098     0083  2895               	goto	i1l1030
+  2099     0084                     u17_20:
+  2100     0084                     i1l1026:
+  2101                           
+  2102                           ;mcc_generated_files/compare/src/eccp.c: 81:         ECCP_SetCompareCount(CCPR1 + largur
+      +                          a_pulso);
+  2103     0084  0020               	movlb	0	; select bank0
+  2104     0085  082C               	movf	_largura_pulso,w	;volatile
+  2105     0086  0025               	movlb	5	; select bank5
+  2106     0087  0711               	addwf	17,w	;volatile
+  2107     0088  00F0               	movwf	i1ECCP_SetCompareCount@compareCount
+  2108     0089  0020               	movlb	0	; select bank0
+  2109     008A  082D               	movf	_largura_pulso+1,w	;volatile
+  2110     008B  0025               	movlb	5	; select bank5
+  2111     008C  3D12               	addwfc	18,w	;volatile
+  2112     008D  00F1               	movwf	i1ECCP_SetCompareCount@compareCount+1
+  2113     008E  3181  2109  3180   	fcall	i1_ECCP_SetCompareCount
+  2114     0091                     i1l1028:
+  2115                           
+  2116                           ;mcc_generated_files/compare/src/eccp.c: 82:         CCP1CON = 0x09;
+  2117     0091  3009               	movlw	9
+  2118     0092  0025               	movlb	5	; select bank5
+  2119     0093  0093               	movwf	19	;volatile
+  2120                           
+  2121                           ;mcc_generated_files/compare/src/eccp.c: 83:     } else {
+  2122     0094  28AB               	goto	i1l244
+  2123     0095                     i1l1030:
+  2124                           
+  2125                           ;mcc_generated_files/compare/src/eccp.c: 85:         ECCP_SetCompareCount(CCPR1 + (20000
+      +                           - largura_pulso));
+  2126     0095  0020               	movlb	0	; select bank0
+  2127     0096  082C               	movf	_largura_pulso,w	;volatile
+  2128     0097  0025               	movlb	5	; select bank5
+  2129     0098  0211               	subwf	17,w	;volatile
+  2130     0099  00F4               	movwf	??_ECCP_CompareISR
+  2131     009A  0020               	movlb	0	; select bank0
+  2132     009B  082D               	movf	_largura_pulso+1,w	;volatile
+  2133     009C  0025               	movlb	5	; select bank5
+  2134     009D  3B12               	subwfb	18,w	;volatile
+  2135     009E  00F5               	movwf	??_ECCP_CompareISR+1
+  2136     009F  0874               	movf	??_ECCP_CompareISR,w
+  2137     00A0  3E20               	addlw	32
+  2138     00A1  00F0               	movwf	i1ECCP_SetCompareCount@compareCount
+  2139     00A2  304E               	movlw	78
+  2140     00A3  3D75               	addwfc	??_ECCP_CompareISR+1,w
+  2141     00A4  00F1               	movwf	i1ECCP_SetCompareCount@compareCount+1
+  2142     00A5  3181  2109  3180   	fcall	i1_ECCP_SetCompareCount
+  2143     00A8                     i1l1032:
+  2144                           
+  2145                           ;mcc_generated_files/compare/src/eccp.c: 86:         CCP1CON = 0x08;
+  2146     00A8  3008               	movlw	8
+  2147     00A9  0025               	movlb	5	; select bank5
+  2148     00AA  0093               	movwf	19	;volatile
+  2149     00AB                     i1l244:
+  2150     00AB  0008               	return
+  2151     00AC                     __end_of_ECCP_CompareISR:
+  2152                           
+  2153                           	psect	text12
+  2154     0109                     __ptext12:	
+  2155 ;; *************** function i1_ECCP_SetCompareCount *****************
+  2156 ;; Defined at:
+  2157 ;;		line 62 in file "mcc_generated_files/compare/src/eccp.c"
+  2158 ;; Parameters:    Size  Location     Type
+  2159 ;;  compareCount    2    0[COMMON] unsigned short 
+  2160 ;; Auto vars:     Size  Location     Type
+  2161 ;;  module          2    2[COMMON] struct CCPR1Reg_tag
+  2162 ;; Return value:  Size  Location     Type
+  2163 ;;                  1    wreg      void 
+  2164 ;; Registers used:
+  2165 ;;		wreg
+  2166 ;; Tracked objects:
+  2167 ;;		On entry : 0/0
+  2168 ;;		On exit  : 0/0
+  2169 ;;		Unchanged: 0/0
+  2170 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  2171 ;;      Params:         2       0       0       0
+  2172 ;;      Locals:         2       0       0       0
+  2173 ;;      Temps:          0       0       0       0
+  2174 ;;      Totals:         4       0       0       0
+  2175 ;;Total ram usage:        4 bytes
+  2176 ;; Hardware stack levels used: 1
+  2177 ;; This function calls:
+  2178 ;;		Nothing
+  2179 ;; This function is called by:
+  2180 ;;		_ECCP_CompareISR
+  2181 ;; This function uses a non-reentrant model
+  2182 ;;
+  2183                           
+  2184     0109                     i1_ECCP_SetCompareCount:	
+  2185                           ;psect for function i1_ECCP_SetCompareCount
+  2186                           
+  2187     0109                     i1l1020:	
+  2188                           ;incstack = 0
+  2189                           ; Regs used in i1_ECCP_SetCompareCount: [wreg]
+  2190                           
+  2191                           
+  2192                           ;mcc_generated_files/compare/src/eccp.c: 62: void ECCP_SetCompareCount(uint16_t compareC
+      +                          ount);mcc_generated_files/compare/src/eccp.c: 63: {;mcc_generated_files/compare/src/eccp
+      +                          .c: 64:     CCPR1_PERIOD_REG_T module;;mcc_generated_files/compare/src/eccp.c: 67:     m
+      +                          odule.ccpr1_16Bit = compareCount;
+  2193     0109  0871               	movf	i1ECCP_SetCompareCount@compareCount+1,w
+  2194     010A  00F3               	movwf	i1ECCP_SetCompareCount@module+1
+  2195     010B  0870               	movf	i1ECCP_SetCompareCount@compareCount,w
+  2196     010C  00F2               	movwf	i1ECCP_SetCompareCount@module
+  2197                           
+  2198                           ;mcc_generated_files/compare/src/eccp.c: 69:     CCPR1L = module.ccpr1l;
+  2199     010D  0872               	movf	i1ECCP_SetCompareCount@module,w
+  2200     010E  0025               	movlb	5	; select bank5
+  2201     010F  0091               	movwf	17	;volatile
+  2202                           
+  2203                           ;mcc_generated_files/compare/src/eccp.c: 70:     CCPR1H = module.ccpr1h;
+  2204     0110  0873               	movf	i1ECCP_SetCompareCount@module+1,w
+  2205     0111  0092               	movwf	18	;volatile
+  2206     0112                     i1l239:
+  2207     0112  0008               	return
+  2208     0113                     __end_ofi1_ECCP_SetCompareCount:
+  2209     0001                     ___latbits      equ	1
+  2210     007E                     btemp           set	126	;btemp
+  2211     007E                     int$flags       set	126
+  2212     007E                     btemp0          set	126
+  2213     007F                     btemp1          set	127
+  2214     007E                     wtemp0          set	126
+  2215     007F                     wtemp0a         set	127
+  2216     007F                     ttemp0a         set	127
+  2217     0080                     ltemp0a         set	128
+  2218                           
+  2219                           	psect	config
+  2220                           
+  2221                           ;Config register CONFIG1 @ 0x8007
+  2222                           ;	Oscillator Selection
+  2223                           ;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
+  2224                           ;	Watchdog Timer Enable
+  2225                           ;	WDTE = OFF, WDT disabled
+  2226                           ;	Power-up Timer Enable
+  2227                           ;	PWRTE = OFF, PWRT disabled
+  2228                           ;	MCLR Pin Function Select
+  2229                           ;	MCLRE = OFF, MCLR/VPP pin function is digital input
+  2230                           ;	Flash Program Memory Code Protection
+  2231                           ;	CP = OFF, Program memory code protection is disabled
+  2232                           ;	Data Memory Code Protection
+  2233                           ;	CPD = OFF, Data memory code protection is disabled
+  2234                           ;	Brown-out Reset Enable
+  2235                           ;	BOREN = ON, Brown-out Reset enabled
+  2236                           ;	Clock Out Enable
+  2237                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
+      +                          pin
+  2238                           ;	Internal/External Switchover
+  2239                           ;	IESO = ON, Internal/External Switchover mode is enabled
+  2240                           ;	Fail-Safe Clock Monitor Enable
+  2241                           ;	FCMEN = ON, Fail-Safe Clock Monitor is enabled
+  2242     8007                     	org	32775
+  2243     8007  3FA4               	dw	16292
+  2244                           
+  2245                           ;Config register CONFIG2 @ 0x8008
+  2246                           ;	Flash Memory Self-Write Protection
+  2247                           ;	WRT = OFF, Write protection off
+  2248                           ;	PLL Enable
+  2249                           ;	PLLEN = OFF, 4x PLL disabled
+  2250                           ;	Stack Overflow/Underflow Reset Enable
+  2251                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
+  2252                           ;	Brown-out Reset Voltage Selection
+  2253                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+  2254                           ;	In-Circuit Debugger Mode
+  2255                           ;	DEBUG = 0x1, unprogrammed default
+  2256                           ;	Low-Voltage Programming Enable
+  2257                           ;	LVP = OFF, High-voltage on MCLR/VPP must be used for programming
+  2258     8008                     	org	32776
+  2259     8008  1EFF               	dw	7935
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        2
+    BSS         2
+    Persistent  54
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      6      10
+    BANK0            80      8      14
+    BANK1            80      0       0
+    BANK2            64      0       0
+
+Pointer List with Targets:
+
+    INT_InterruptHandler	PTR FTN()void  size(2) Largest target is 1
+		 -> INT_DefaultInterruptHandler(), NULL(), 
+
+    INT_SetInterruptHandler@InterruptHandler	PTR FTN()void  size(2) Largest target is 1
+		 -> INT_DefaultInterruptHandler(), 
+
+    TMR1_GateCallback	PTR FTN()void  size(2) Largest target is 1
+		 -> TMR1_DefaultGateCallback(), NULL(), 
+
+    TMR1_OverflowCallback	PTR FTN()void  size(2) Largest target is 1
+		 -> TMR1_DefaultOverflowCallback(), NULL(), 
+
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in COMMON
+
+    _INTERRUPT_InterruptManager->_ECCP_CompareISR
+    _ECCP_CompareISR->i1_ECCP_SetCompareCount
+
+Critical Paths under _main in BANK0
+
+    _main->_ECCP_SetCompareCount
+    _INTERRUPT_Initialize->_INT_SetInterruptHandler
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 4     4      0     241
+                                              4 BANK0      4     4      0
+               _ECCP_SetCompareCount
+                  _SYSTEM_Initialize
+                         _TMR1_Start
+ ---------------------------------------------------------------------------------
+ (1) _TMR1_Start                                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _SYSTEM_Initialize                                    0     0      0      34
+                   _CLOCK_Initialize
+                    _ECCP_Initialize
+               _INTERRUPT_Initialize
+             _PIN_MANAGER_Initialize
+                    _TMR1_Initialize
+ ---------------------------------------------------------------------------------
+ (2) _TMR1_Initialize                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _PIN_MANAGER_Initialize                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _INTERRUPT_Initialize                                 0     0      0      34
+            _INT_SetInterruptHandler
+ ---------------------------------------------------------------------------------
+ (3) _INT_SetInterruptHandler                              2     0      2      34
+                                              0 BANK0      2     0      2
+ ---------------------------------------------------------------------------------
+ (2) _ECCP_Initialize                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _CLOCK_Initialize                                     0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _ECCP_SetCompareCount                                 4     2      2     102
+                                              0 BANK0      4     2      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _INTERRUPT_InterruptManager                           0     0      0      70
+                    _ECCP_CompareISR
+ ---------------------------------------------------------------------------------
+ (5) _ECCP_CompareISR                                      2     2      0      70
+                                              4 COMMON     2     2      0
+             i1_ECCP_SetCompareCount
+ ---------------------------------------------------------------------------------
+ (6) i1_ECCP_SetCompareCount                               4     2      2      70
+                                              0 COMMON     4     2      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 6
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _ECCP_SetCompareCount
+   _SYSTEM_Initialize
+     _CLOCK_Initialize
+     _ECCP_Initialize
+     _INTERRUPT_Initialize
+       _INT_SetInterruptHandler
+     _PIN_MANAGER_Initialize
+     _TMR1_Initialize
+   _TMR1_Start
+
+ _INTERRUPT_InterruptManager (ROOT)
+   _ECCP_CompareISR
+     i1_ECCP_SetCompareCount
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BITCOMMON           14      0       0      0.0%
+BITBANK0            80      0       0      0.0%
+BITBANK1            80      0       0      0.0%
+BITBANK2            64      0       0      0.0%
+BIGRAM             224      0       0      0.0%
+COMMON              14      6      10     71.4%
+BANK0               80      8      14     17.5%
+BANK1               80      0       0      0.0%
+BANK2               64      0       0      0.0%
+STACK                0      0       0      0.0%
+DATA                 0      0      22      0.0%
+
+
+Microchip Technology PIC Macro Assembler V3.10 build 20250813170317 
+Symbol Table                                                                                   Wed Nov 18 17:17:15 2026
+
+                                     l21 00FE                                       l40 0120  
+                                     l52 011A                                       l81 00C1  
+                                     l87 0123                                      l216 00D5  
+                                    l160 00E5                                      l236 0108  
+                                    l190 0073                                      l239 00F2  
+                                    l189 006D                                      l990 00AE  
+                                    l984 0113                                      l992 00B0  
+                                    l986 0116                                      l994 00B4  
+                                    l996 00BD                                      l988 00AC  
+                                    l998 00BE                                      u320 0046  
+                                    u321 0045                                      u330 0054  
+                                    u331 0053                                      u340 005A  
+                                    u341 0058                                      u350 005B  
+                                    u360 0064                                      u361 0063  
+                                    u370 0078                                      u371 0077  
+                                    u387 004A                          _timer1ReloadVal 0078  
+                                    wreg 0009                                     l1000 00BF  
+                                   l1010 00CD                                     l1002 00C2  
+                                   l1012 00FF                                     l1004 00C4  
+                                   l1014 0102                                     l1006 00C7  
+                                   l1016 0104                                     l1120 00F3  
+                                   l1008 00CA                                     l1130 00E6  
+                                   l1018 0106                                     l1122 00F6  
+                                   l1034 0121                                     l1124 00D6  
+                                   l1140 003D                                     l1132 002D  
+                                   l1118 011B                                     l1126 00DC  
+                                   l1150 0054                                     l1142 0040  
+                                   l1134 0038                                     l1128 00DF  
+                                   l1152 005C                                     l1144 0042  
+                                   l1136 003B                                     l1154 0064  
+                                   l1146 0046                                     l1138 003C  
+                                   l1156 0069                                     l1148 004F  
+                                   l1158 0071                                     _LATA 010C  
+                                   i1l30 001B                                     _WPUA 020C  
+               ??i1_ECCP_SetCompareCount 0072                                     _main 002D  
+                                   fsr1h 0007                                     fsr1l 0006  
+                                   btemp 007E              _INT_DefaultInterruptHandler 0000  
+                                   start 001D          __end_of_INT_SetInterruptHandler 0121  
+                                  ?_main 0070                                    _CCPR1 0291  
+                                  _T1CON 0018                                    _IOCAF 0393  
+                                  _IOCAN 0392                                    _IOCAP 0391  
+                                  i1l244 00AB                                    i1l239 0112  
+                                  u20_20 0018                                    u20_21 0017  
+                                  u17_20 0084                                    u17_21 0083  
+                                  _TMR1H 0017                                    _TMR1L 0016  
+                                  u18_20 000E                                    u18_21 000D  
+                                  u19_20 0013                                    u19_21 0012  
+                                  _TRISA 008C                              ?_TMR1_Start 0070  
+                                  btemp0 007E                                    btemp1 007F  
+                __end_of_TMR1_Initialize 00C2                                    status 0003  
+                                  wtemp0 007E                          __initialization 001F  
+                           __end_of_main 007B              ?_INTERRUPT_InterruptManager 0070  
+                                 ??_main 0024                                   _CCPR1H 0292  
+                                 _CCPR1L 0291                                   _APFCON 011D  
+                                 _ANSELA 018C                                   _BORCON 0116  
+                                 _T1GCON 0019                                   i1l1020 0109  
+                                 i1l1030 0095                                   i1l1022 007B  
+                                 i1l1032 00A8                                   i1l1024 007D  
+                                 i1l1026 0084                                   i1l1050 0018  
+                                 i1l1028 0091                                   i1l1044 000A  
+                                 i1l1046 000E                                   i1l1048 0013  
+                                 _OSCCON 0099             __end_of_ECCP_SetCompareCount 00F3  
+                          _largura_pulso 002C                        ?_CLOCK_Initialize 0070  
+                     ??_CLOCK_Initialize 0020                                   ltemp0a 0080  
+                                 ttemp0a 007F  INT_SetInterruptHandler@InterruptHandler 0020  
+                                 wtemp0a 007F                         ?_TMR1_Initialize 0070  
+             ECCP_SetCompareCount@module 0022                        _SYSTEM_Initialize 00D6  
+                __end_of__initialization 0029                       ?_SYSTEM_Initialize 0070  
+                         __pcstackCOMMON 0070                             __pidataBANK0 0124  
+                    ??_SYSTEM_Initialize 0022                   i1_ECCP_SetCompareCount 0109  
+                         _OPTION_REGbits 0095                __end_of_SYSTEM_Initialize 00E6  
+                             __pnvCOMMON 0076                        ??_ECCP_CompareISR 0074  
+                             __pmaintext 002D                               __pintentry 0004  
+                                _CCP1CON 0293                     _ECCP_SetCompareCount 00E6  
+                      ??_ECCP_Initialize 0020                                  _OSCTUNE 0098  
+                           ??_TMR1_Start 0020                       __end_of_TMR1_Start 0124  
+                                __ptext1 0121                                  __ptext2 00D6  
+                                __ptext3 00AC                                  __ptext4 00C2  
+                                __ptext5 00F3                                  __ptext6 011B  
+                                __ptext7 00FF                                  __ptext8 0113  
+                                __ptext9 00E6                    ?_ECCP_SetCompareCount 0020  
+                              _T1CONbits 0018                 ??_PIN_MANAGER_Initialize 0020  
+                _INT_SetInterruptHandler 011B             i1ECCP_SetCompareCount@module 0072  
+                   end_of_initialization 0029                                _PORTAbits 000C  
+                  _TMR1_OverflowCallback 002A             __end_of_INTERRUPT_Initialize 00FF  
+                ?i1_ECCP_SetCompareCount 0070                   ??_ECCP_SetCompareCount 0022  
+              ??_INT_SetInterruptHandler 0022                      start_initialization 001F  
+                        _ECCP_CompareISR 007B           __end_ofi1_ECCP_SetCompareCount 0113  
+               _TMR1_DefaultGateCallback 0000                              __pdataBANK0 002C  
+                        _ECCP_Initialize 00FF                        main@posicao_servo 0027  
+                            __pbssCOMMON 0078                                ___latbits 0001  
+                          __pcstackBANK0 0020                        _TMR1_GateCallback 0028  
+                              __pnvBANK0 0028         ECCP_SetCompareCount@compareCount 0020  
+     i1ECCP_SetCompareCount@compareCount 0070                   _PIN_MANAGER_Initialize 00C2  
+                __end_of_ECCP_CompareISR 00AC             ??_INTERRUPT_InterruptManager 0076  
+                   _INTERRUPT_Initialize 00F3                         _CLOCK_Initialize 0113  
+                               _PIE1bits 0091                  __end_of_ECCP_Initialize 0109  
+                               _PIR1bits 0011                        ??_TMR1_Initialize 0020  
+                  ?_INTERRUPT_Initialize 0070                                 ___int_sp 0000  
+                       ?_ECCP_CompareISR 0070                                 _main$453 0025  
+                               __ptext11 007B                                 __ptext12 0109  
+                             _T1GCONbits 0019             _TMR1_DefaultOverflowCallback 0000  
+                       ?_ECCP_Initialize 0070                                 int$flags 007E  
+     __end_of_INTERRUPT_InterruptManager 001D               _INTERRUPT_InterruptManager 0004  
+                             _INTCONbits 000B                     _INT_InterruptHandler 0076  
+                 ??_INTERRUPT_Initialize 0022                                 intlevel1 0000  
+                ?_PIN_MANAGER_Initialize 0070                 ?_INT_SetInterruptHandler 0020  
+               __end_of_CLOCK_Initialize 011B                               _TMR1_Start 0121  
+         __end_of_PIN_MANAGER_Initialize 00D6                          _TMR1_Initialize 00AC  

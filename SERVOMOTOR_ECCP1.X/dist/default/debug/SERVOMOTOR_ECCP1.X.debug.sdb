@@ -1,0 +1,278 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F1840 ]
+[d frameptr 6 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"43 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\main.c
+[v _main main `(i  1 e 2 0 ]
+"42 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/compare/src/eccp.c
+[v _ECCP_Initialize ECCP_Initialize `(v  1 e 1 0 ]
+"62
+[v _ECCP_SetCompareCount ECCP_SetCompareCount `(v  1 e 1 0 ]
+[v i1_ECCP_SetCompareCount ECCP_SetCompareCount `(v  1 e 1 0 ]
+"73
+[v _ECCP_CompareISR ECCP_CompareISR `(v  1 e 1 0 ]
+"39 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/clock.c
+[v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
+"40 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+"59
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+"88
+[v _INT_CallBack INT_CallBack `(v  1 e 1 0 ]
+"97
+[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
+"101
+[v _INT_DefaultInterruptHandler INT_DefaultInterruptHandler `(v  1 e 1 0 ]
+"38 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/pins.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"39 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"53 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/timer/src/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+"97
+[v _TMR1_Start TMR1_Start `(v  1 e 1 0 ]
+"121
+[v _TMR1_CounterSet TMR1_CounterSet `(v  1 e 1 0 ]
+"220
+[v _TMR1_DefaultOverflowCallback TMR1_DefaultOverflowCallback `(v  1 s 1 TMR1_DefaultOverflowCallback ]
+"230
+[v _TMR1_DefaultGateCallback TMR1_DefaultGateCallback `(v  1 s 1 TMR1_DefaultGateCallback ]
+[s S23 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"372 C:/Program Files/Microchip/MPLABX/v6.30/packs/Microchip/PIC12-16F1xxx_DFP/1.8.254/xc8\pic\include\proc/pic12f1840.h
+[s S32 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S37 . 1 `S23 1 . 1 0 `S32 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES37  1 e 1 @11 ]
+[s S403 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+]
+"442
+[u S410 . 1 `S403 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES410  1 e 1 @12 ]
+[s S118 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"494
+[u S127 . 1 `S118 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES127  1 e 1 @17 ]
+"606
+[v _TMR1L TMR1L `VEuc  1 e 1 @22 ]
+"626
+[v _TMR1H TMR1H `VEuc  1 e 1 @23 ]
+"646
+[v _T1CON T1CON `VEuc  1 e 1 @24 ]
+[s S205 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+"668
+[s S214 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[u S218 . 1 `S205 1 . 1 0 `S214 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES218  1 e 1 @24 ]
+"718
+[v _T1GCON T1GCON `VEuc  1 e 1 @25 ]
+[s S271 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+"740
+[s S280 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S284 . 1 `S271 1 . 1 0 `S280 1 . 1 0 ]
+[v _T1GCONbits T1GCONbits `VES284  1 e 1 @25 ]
+"1000
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+[s S97 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1067
+[u S106 . 1 `S97 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES106  1 e 1 @145 ]
+[s S55 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1175
+[s S64 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S69 . 1 `S55 1 . 1 0 `S64 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES69  1 e 1 @149 ]
+"1345
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
+"1403
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1730
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"1912
+[v _BORCON BORCON `VEuc  1 e 1 @278 ]
+"2251
+[v _APFCON APFCON `VEuc  1 e 1 @285 ]
+"2393
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2983
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"3725
+[v _CCPR1 CCPR1 `VEus  1 e 2 @657 ]
+"3732
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @657 ]
+"3752
+[v _CCPR1H CCPR1H `VEuc  1 e 1 @658 ]
+"3772
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @659 ]
+"4120
+[v _IOCAP IOCAP `VEuc  1 e 1 @913 ]
+"4178
+[v _IOCAN IOCAN `VEuc  1 e 1 @914 ]
+"4236
+[v _IOCAF IOCAF `VEuc  1 e 1 @915 ]
+"40 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/compare/src/eccp.c
+[v _largura_pulso largura_pulso `VEus  1 e 2 0 ]
+"38 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/interrupt.c
+[v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
+"47 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/timer/src/tmr1.c
+[v _timer1ReloadVal timer1ReloadVal `VEus  1 s 2 timer1ReloadVal ]
+"48
+[v _TMR1_OverflowCallback TMR1_OverflowCallback `*.37(v  1 s 2 TMR1_OverflowCallback ]
+"50
+[v _TMR1_GateCallback TMR1_GateCallback `*.37(v  1 s 2 TMR1_GateCallback ]
+"43 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"58
+[v main@posicao_servo posicao_servo `uc  1 a 1 7 ]
+"80
+} 0
+"97 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/timer/src/tmr1.c
+[v _TMR1_Start TMR1_Start `(v  1 e 1 0 ]
+{
+"100
+} 0
+"39 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"46
+} 0
+"53 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/timer/src/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+{
+"80
+} 0
+"38 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/pins.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"89
+} 0
+"40 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+{
+"50
+} 0
+"97
+[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v INT_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
+"99
+} 0
+"42 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/compare/src/eccp.c
+[v _ECCP_Initialize ECCP_Initialize `(v  1 e 1 0 ]
+{
+"60
+} 0
+"39 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/clock.c
+[v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
+{
+"47
+} 0
+"62 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/compare/src/eccp.c
+[v _ECCP_SetCompareCount ECCP_SetCompareCount `(v  1 e 1 0 ]
+{
+[s S509 . 2 `uc 1 ccpr1l 1 0 `uc 1 ccpr1h 1 1 ]
+"64
+[s S512 . 2 `us 1 ccpr1_16Bit 2 0 ]
+[u S514 CCPR1Reg_tag 2 `S509 1 . 2 0 `S512 1 . 2 0 ]
+[v ECCP_SetCompareCount@module module `S514  1 a 2 2 ]
+"62
+[v ECCP_SetCompareCount@compareCount compareCount `us  1 p 2 0 ]
+"71
+} 0
+"59 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+{
+"77
+} 0
+"73 C:\Users\robis\MPLABXProjects\PIC12F1840_SERVOMOTOR_ECCP1\SERVOMOTOR_ECCP1.X\mcc_generated_files/compare/src/eccp.c
+[v _ECCP_CompareISR ECCP_CompareISR `(v  1 e 1 0 ]
+{
+"88
+} 0
+"62
+[v i1_ECCP_SetCompareCount ECCP_SetCompareCount `(v  1 e 1 0 ]
+{
+[s S509 . 2 `uc 1 ccpr1l 1 0 `uc 1 ccpr1h 1 1 ]
+"64
+[s S512 . 2 `us 1 ccpr1_16Bit 2 0 ]
+[u S514 CCPR1Reg_tag 2 `S509 1 . 2 0 `S512 1 . 2 0 ]
+[v i1ECCP_SetCompareCount@module module `S514  1 a 2 2 ]
+"62
+[v i1ECCP_SetCompareCount@compareCount compareCount `us  1 p 2 0 ]
+"71
+} 0
