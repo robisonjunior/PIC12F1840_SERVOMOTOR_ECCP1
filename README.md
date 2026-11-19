@@ -8,6 +8,8 @@
 
 Firmware embarcado de alta precisão em C para controle angular de servomotores utilizando o microcontrolador **Microchip PIC12F1840**. Em vez de utilizar PWM convencional baseado em Timer2 (que sofre com baixa resolução em frequências baixas como 50 Hz), este projeto implementa **modulação por largura de pulso baseada em eventos de comparação de hardware (`ECCP1` em modo Compare + `Timer1` de 16 bits)** operando a **16 MHz** (`FOSC/4 = 4 MHz`, prescaler `1:4`), alcançando resolução exata de **1 µs por tick** sem *jitter* de software.
 
+![Esquematico](./sch.jpg)
+
 ---
 
 ## 📋 Sumário
